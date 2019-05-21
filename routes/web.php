@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    return view('layout.default');
+    return view('layout.navbar');
 });
 /*
 taper cette commande pour afficher le contenu ci dessous
