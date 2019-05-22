@@ -26,17 +26,17 @@
         </li>
         <li>
           <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset ('assets/img/sidebar-2.jpg') }}" alt="">
+            <img src="{{ secure_asset('assets/img/sidebar-2.jpg') }}" alt="">
           </a>
         </li>
         <li>
           <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset ('assets/img/sidebar-3.jpg') }}" alt="">
+            <img src="{{ secure_asset('assets/img/sidebar-3.jpg') }}" alt="">
           </a>
         </li>
         <li>
           <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset ('assets/img/sidebar-4.jpg') }}" alt="">
+            <img src="{{ secure_asset('assets/img/sidebar-4.jpg') }}" alt="">
           </a>
         </li>
         <li class="button-container">
