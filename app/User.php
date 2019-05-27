@@ -36,4 +36,48 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * funtion role
+     */
+    public function role()
+    {
+        return this->belongsTo('App\Role','roles_id')
+    }
+
+    /**
+     * funtion gestionnaire
+     */
+    public function gestionnaire()
+    {
+        return this->hasOne('App\Gestionnaire', 'users_id');
+       
+    }
+
+    /**
+     * funtion client
+     */
+    public function client()
+    {
+        return this->hasOne('App\Client', 'users_id');
+       
+    }
+
+    /**
+     * funtion comptable
+     */
+    public function comptable()
+    {
+        return this->hasOne('App\Comptable', 'users_id');
+       
+    }
+
+    /**
+     * funtion agent
+     */
+    public function agent()
+    {
+        return this->hasOne('App\Agent', 'users_id');
+       
+    }
 }

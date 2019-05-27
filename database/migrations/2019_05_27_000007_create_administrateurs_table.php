@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompteursTable extends Migration
+class CreateAdministrateursTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'compteurs';
+    public $tableName = 'administrateurs';
 
     /**
      * Run the migrations.
-     * @table compteurs
+     * @table administrateurs
      *
      * @return void
      */
@@ -24,9 +24,18 @@ class CreateCompteursTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
-            $table->string('numero_serie', 200)->nullable();
+            $table->string('matricule', 200);
+            $table->unsignedInteger('users_id')->nullable();
+
+            $table->index(["users_id"], 'fk_administrateurs_users1_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
+
+
+            $table->foreign('users_id', 'fk_administrateurs_users1_idx')
+                ->references('id')->on('users')
+                ->onDelete('no action')
+                ->onUpdate('no action');
         });
     }
 
