@@ -10,45 +10,42 @@ namespace App;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Village
+ * Class Administrateur
  * 
  * @property int $id
  * @property string $uuid
- * @property string $nom
- * @property int $chef_id
- * @property int $communes_id
+ * @property string $matricule
+ * @property int $users_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \App\Commune $commune
- * @property \Illuminate\Database\Eloquent\Collection $clients
+ * @property \App\User $user
+ * @property \Illuminate\Database\Eloquent\Collection $compteurs
  *
  * @package App
  */
-class Village extends Eloquent
+class Administrateur extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'chef_id' => 'int',
-		'communes_id' => 'int'
+		'users_id' => 'int'
 	];
 
 	protected $fillable = [
 		'uuid',
-		'nom',
-		'chef_id',
-		'communes_id'
+		'matricule',
+		'users_id'
 	];
 
-	public function commune()
+	public function user()
 	{
-		return $this->belongsTo(\App\Commune::class, 'communes_id');
+		return $this->belongsTo(\App\User::class, 'users_id');
 	}
 
-	public function clients()
+	public function compteurs()
 	{
-		return $this->hasMany(\App\Client::class);
+		return $this->hasMany(\App\Compteur::class, 'administrateurs_id');
 	}
 }

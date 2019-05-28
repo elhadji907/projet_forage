@@ -1,20 +1,51 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ * Date: Mon, 27 May 2019 20:16:13 +0000.
+ */
+
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Gestionnaire extends Model
+/**
+ * Class Gestionnaire
+ * 
+ * @property int $id
+ * @property string $uuid
+ * @property string $matricule
+ * @property int $users_id
+ * @property string $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * 
+ * @property \App\User $user
+ * @property \Illuminate\Database\Eloquent\Collection $clients
+ *
+ * @package App
+ */
+class Gestionnaire extends Eloquent
 {
-    //
-    public function user()
-    {
-        return this->belongsTo('App\User','users_id')
-    }
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-    public function client()
-    {
-        return this->hasMany('App\Client', 'gestionnaires_id');
-       
-    }
+	protected $casts = [
+		'users_id' => 'int'
+	];
+
+	protected $fillable = [
+		'uuid',
+		'matricule',
+		'users_id'
+	];
+
+	public function user()
+	{
+		return $this->belongsTo(\App\User::class, 'users_id');
+	}
+
+	public function clients()
+	{
+		return $this->hasMany(\App\Client::class, 'gestionnaires_id');
+	}
 }
