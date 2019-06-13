@@ -1,73 +1,34 @@
-<div class="sidebar" data-color="purple" data-background-color="white" data-image="{{ asset('assets/img/sidebar-1.jpg') }}">
-    <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-      Tip 2: you can also add an image using data-image tag
-    -->
-    <div class="logo">
-      <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-        Gestion forage
+<ul class="sidebar navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="index.html">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span>
       </a>
-    </div>
-    <div class="sidebar-wrapper">
-      <ul class="nav">
-        <li class="nav-item active  ">
-          <a class="nav-link" href="#/dashboard.html">
-            <i class="material-icons">dashboard</i>
-            <p>Tableau de bord</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#/user.html">
-            <i class="fas fa-user-edit"></i>
-            <p>Profile utilisateur</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#/tables.html">
-            <i class="fas fa-book"></i>
-            <p>Gestion abonnements</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#/typography.html">
-            <i class="fas fa-book"></i>
-            <p>Gestion facturation</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#/icons.html">
-            <i class="fas fa-book"></i>
-            <p>Gestion clients</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#/map.html">
-            <i class="fas fa-book"></i>
-            <p>Gestion compteurs</p>
-          </a>
-        </li>
-       
-        <li class="nav-item ">
-          <a class="nav-link" href="#">
-            <i class="fas fa-sign-in-alt"></i>
-            <p>Se connecter</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#">
-            <i class="fas fa-sign-out-alt"></i>
-            <p>Se déconnecter</p>
-          </a>
-        </li>
-        <!--
-        <li class="nav-item active-pro ">
-          <a class="nav-link" href="#/upgrade.html">
-            <i class="material-icons">unarchive</i>
-            <p>Upgrade to PRO</p>
-          </a>
-        </li>
-        -->
-      </ul>
-    </div>
-  </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Pages</span>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        <h6 class="dropdown-header">Login Screens:</h6>
+        <a class="dropdown-item" href="login.html">Login</a>
+        <a class="dropdown-item" href="register.html">Register</a>
+        <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+        <div class="dropdown-divider"></div>
+        <h6 class="dropdown-header">Other Pages:</h6>
+        <a class="dropdown-item" href="404.html">404 Page</a>
+        <a class="dropdown-item" href="blank.html">Blank Page</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="charts.html">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Charts</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="tables.html">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Tables</span></a>
+    </li>
+  </ul>
