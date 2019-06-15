@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
+//use Illuminate\Support\Str;
 
 class VillagesTableSeeder extends Seeder
 {
