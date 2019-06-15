@@ -34,13 +34,24 @@
 
       </div>
     </li>
-    {{--  
+     
     <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span></a>
+      <a class="nav-link" href="#">
+        <i class="fas fa-sign-in-alt"></i>
+        <span>Connexion</span></a>
     </li>
-    --}}
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Déconnexion</span></a>
+    </li>
+
+    <li class="nav-item active">
+      <a class="nav-link" href="{{ url('/table') }}">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Tables</span></a>
+    </li>
+    
     {{--  
     <li class="nav-item">
       <a class="nav-link" href="tables.html">

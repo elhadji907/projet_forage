@@ -18,3 +18,9 @@
   {{--  mon ajout  --}}
   {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>  --}}
 
+{{-- script datables pour la pagination et la recherche avec ajax --}}
+<script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
+@stack('scripts')
+
+
+

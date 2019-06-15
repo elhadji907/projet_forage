@@ -31,9 +31,9 @@
      {{--   <!-- Breadcrumbs-->  --}}
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          <a href="{{ url('/') }}">Tableau de bord</a>
         </li>
-        <li class="breadcrumb-item active">Overview</li>
+        <li class="breadcrumb-item active">page en cours</li>
       </ol>
 @section('content')
 @include('layout.main')

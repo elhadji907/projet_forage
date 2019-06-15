@@ -18,6 +18,10 @@
 Route::get('/', function () {
     return view('layout.index');
 });
+
+Route::get('/table', function () {
+    return view('layout.tables');
+});
 /*
 taper cette commande pour afficher le contenu ci dessous
 php artisan make:auth

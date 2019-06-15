@@ -227,13 +227,13 @@ $factory->define(App\Reglement::class, function (Faker\Generator $faker) {
         'uuid' => $faker->uuid,
         'date' => $faker->dateTimeBetween($startDate = '-10 month', $endDate = 'now', $timezone = null),
         'montant' => $faker->randomFloat(),
-        'types_id' => function () {
+        'types_id' => function () use($id_type) {
              return  $id_type;
         },
-        'factures_id' => function () {
+        'factures_id' => function () use($id_facture){
              return $id_facture;
         },
-        'comptables_id' => function () {
+        'comptables_id' => function () use($id_comptable) {
              return $id_comptable;
         },
     ];
