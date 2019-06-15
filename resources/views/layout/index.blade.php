@@ -9,9 +9,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin - Dashboard</title>
+  <title>Gestion - Forage</title>
 
-  <!-- Custom fonts for this template-->
+  {{--  <!-- Custom fonts for this template-->  --}}
   @include('layout.style')
 
 </head>
@@ -22,24 +22,42 @@
 
   <div id="wrapper">
 
-    <!-- Sidebar -->
+   {{--   <!-- Sidebar -->  --}}
  @include('layout.sidebar')
+ <div id="content-wrapper">
 
+    <div class="container-fluid">
+
+     {{--   <!-- Breadcrumbs-->  --}}
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Overview</li>
+      </ol>
+@section('content')
 @include('layout.main')
-    <!-- /.content-wrapper -->
+   {{--   <!-- /.content-wrapper -->  --}}
+@show
+</div>
+{{--  <!-- /.container-fluid -->  --}}
 
+{{--  <!-- Sticky Footer -->  --}}
+@include('layout.footer')
+
+</div>
   </div>
-  <!-- /#wrapper -->
+  {{--  <!-- /#wrapper -->  --}}
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Logout Modal-->
+  {{--  <!-- Logout Modal-->  --}}
   @include('layout.logoutmodal')
 
-  <!-- Bootstrap core JavaScript-->
+  {{--  <!-- Bootstrap core JavaScript-->  --}}
   @include('layout.script')
 </body>
 
