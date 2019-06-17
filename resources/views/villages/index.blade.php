@@ -1,38 +1,42 @@
 @extends('layout.index')
 @section('content')
-    
-
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
+              
               <div class="card">
-                {{--                                              
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title ">SenForage</h4>
-                  <p class="card-category"> Villages</p>
+                  <div class="card-header">
+                      <i class="fas fa-table"></i>
+                      Liste des villages
+                  </div> 
+                @if(\Session::has('success'))
+                <div class="alert alert-success">
+                 <p>{{ \Session::get('success') }}</p>
                 </div>
-                --}}
+                @endif
                 <div class="card-body">
                   <div class="table-responsive">
-                      <div align="right">
-                          <button type="button" name="add" id="add_data" class="btn btn-success btn-sm">Ajouter</button>
-                      </div>
+                    <div align="right">
+                      <a href="{{route('villages.create')}}"><div class="btn btn-success">Nouveau Village&nbsp;<i class="fas fa-plus"></i></div></a> 
+                  </div>
                       <br />
-                    <table class="table">
-                      <thead class=" text-primary">
-                        <th>
-                          ID
-                        </th>
-                        <th>
-                          Nom
-                        </th>
-                        <th>
-                            Chef
-                        </th>
-                        <th>
-                          Info
-                        </th>
+                    <table class="table table-bordered table-striped" width="100%" cellspacing="0">
+                      <thead class="table-dark">
+                        <tr>
+                          <th>ID</th>
+                          <th>Nom</th>
+                          <th>Chef</th>
+                          <th>Info</th>
+                        </tr>
                       </thead>
+                      <tfoot class="table-dark">
+                        <tr>
+                          <th>ID</th>
+                          <th>Nom</th>
+                          <th>Chef</th>
+                          <th>Info</th>
+                        <tr>
+                      </tfoot>
                       <tbody>
                           @foreach ($villages as $village)
                         <tr>
@@ -49,9 +53,8 @@
                                 {{$village->chef->user->name."  ".$village->chef->user->firstname}}
                           </td>
                           <td>
-                              <a class="btn btn-primary" href={{route('villages.show',['village'=>$village->id])}}><i class="material-icons">edit</i> </a>
+                              <a class="btn btn-primary"  href={{route('villages.show',['village'=>$village->id])}} title="Modifier"><i class="far fa-edit">&nbsp;Edit</i></a>
                           </td>
-                   
                         </tr>
                         @endforeach
                       </tbody>

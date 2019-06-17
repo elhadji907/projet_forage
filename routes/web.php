@@ -22,12 +22,21 @@ Route::get('/', function () {
 Route::get('/table', function () {
     return view('layout.tables');
 });
+Route::get('/login1', function () {
+    return view('layout.login1');
+});
+
 /*
 taper cette commande pour afficher le contenu ci dessous
 php artisan make:auth
 */
 Auth::routes();
 
+Route::get( '/clients.selectvillage', function(){
+    return view('clients.selectvillage');
+})->name('clients.selectvillage');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('villages', 'VillageController');
-Route::resource('clients', 'clientController');
+Route::get('/clients/list', 'clientController@list')->name('clients.list');
+Route::get('/villages/list', 'VillageController@list')->name('villages.list');
+Route::resource('/villages', 'VillageController');
+Route::resource('/clients', 'clientController');

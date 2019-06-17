@@ -36,7 +36,7 @@
     </li>
      
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{{ url('/login1') }}">
         <i class="fas fa-sign-in-alt"></i>
         <span>Connexion</span></a>
     </li>

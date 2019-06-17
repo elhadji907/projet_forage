@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Village;
 use Illuminate\Http\Request;
 use App\Helpers\PCollection;
+use Yajra\Datatables\Datatables;
 
 class VillageController extends Controller
 {
@@ -26,7 +27,7 @@ class VillageController extends Controller
      */
     public function create()
     {
-        //
+        return view('villages.create');
     }
 
     /**
@@ -37,7 +38,18 @@ class VillageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nom_du_village'     =>  'required',
+            'nom_du_chef_de_village'     =>  'required',
+            'nom_de_la_commune'     =>  'required'
+        ]);
+        $village = new Village([
+            'nom'     =>  $request->get('nom_du_village'),
+            'chef_id'     =>  $request->get('nom_du_chef_de_village'),
+            'communes_id'     =>  $request->get('nom_de_la_commune')
+        ]);
+        $village->save();
+        return redirect()->route('villages.index')->with('success', 'Village ajouter avec succès');
     }
 
     /**
@@ -83,5 +95,11 @@ class VillageController extends Controller
     public function destroy(Village $village)
     {
         //
+    }
+
+    public function list(Request $request)
+    {
+        $villages=Village::with('chef.user','commune.arrondissement.departement.region')->get();
+        return Datatables::of($villages)->make(true);
     }
 }

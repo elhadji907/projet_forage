@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Client;
 use Illuminate\Http\Request;
 use App\Helpers\PCollection;
+use Yajra\Datatables\Datatables;
+
 
 class clientController extends Controller
 {
@@ -15,8 +17,8 @@ class clientController extends Controller
      */
     public function index()
     {
-        $clients=Client::all()->load(['user','gestionnaire.user','village'])->paginate(10);
-        return view('clients.index',compact('clients'));
+        // $clients=Client::all()->load(['user','gestionnaire.user','village'])->paginate(10);
+        return view('clients.index');
     }
 
     /**
@@ -24,9 +26,11 @@ class clientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $village_id=$request->input('village');
+        $village=\App\Village::find($village_id);
+        return view('clients.create',compact('village'));
     }
 
     /**
@@ -37,7 +41,16 @@ class clientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request, [
+                'nom' => 'required|string|max:50',
+                'prenom' => 'required|string|max:50',
+                'email' => 'required|email|max:255|unique:users,email',
+                'password' => 'required|string|max:50',
+                'village' => 'required|exists:villages,id',
+            ]
+        );
+        return view('clients.index');
     }
 
     /**
@@ -84,4 +97,12 @@ class clientController extends Controller
     {
         //
     }
+
+    //lister les client en utilisant la méthode ajax
+    public function list(Request $request)
+    {
+        $clients=Client::with('user')->get();
+        return Datatables::of($clients)->make(true);
+    }
+ 
 }

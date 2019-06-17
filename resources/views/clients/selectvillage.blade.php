@@ -6,31 +6,36 @@
               <div class="card"> 
                   <div class="card-header">
                       <i class="fas fa-table"></i>
-                      Liste des clients
+                      Selection du village pour le client
                   </div>              
                 <div class="card-body">
                       <div class="table-responsive">
                           <div align="right">
-                              <a href="{{route('clients.selectvillage')}}"><div class="btn btn-success">Nouveau Client&nbsp;<i class="fas fa-user-plus"></i></div></a> 
+
+                            {{--  <a href="{{route('villages.create')}}">
+                                <div class="btn btn-success">Nouveau Client&nbsp;<i class="fas fa-user-plus"></i>
+                                </div>
+                            </a>   --}}
+
                           </div>
                           <br />
-                        <table class="table table-bordered table-striped" width="100%" cellspacing="0" id="table-clients">
+                        <table class="table table-bordered table-striped" width="100%" cellspacing="0" id="table-villages">
                           <thead class="table-dark">
                             <tr>
                               <th>ID</th>
-                              <th>Nom</th>
-                              <th>Prenom</th>
-                              <th>Email</th>
-                              <th>Action</th>
+                              <th>Village</th>
+                              <th>Commune</th>
+                              <th>Region</th>
+                              <th>Selectionner</th>
                             </tr>
                           </thead>
                           <tfoot class="table-dark">
                               <tr>
                                 <th>ID</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                                <th>Email</th>
-                                <th>Action</th>
+                                <th>Village</th>
+                                <th>Commune</th>
+                                <th>Region</th>
+                                <th>Selectionner</th>
                               </tr>
                             </tfoot>
                           <tbody>
@@ -48,15 +53,15 @@
       @push('scripts')
       <script type="text/javascript">
       $(document).ready(function () {
-          $('#table-clients').DataTable( { 
+        $('#table-villages').DataTable( { 
             "processing": true,
             "serverSide": true,
-            "ajax": "{{route('clients.list')}}",
+            "ajax": "{{route('villages.list')}}",
             columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'user.name', name: 'user.name' },
-                    { data: 'user.firstname', name: 'user.firstname' },
-                    { data: 'user.email', name: 'user.email' },
+                    { data: 'nom', name: 'nom' },
+                    { data: 'commune.nom', name: 'commune.nom' },
+                    { data: 'commune.arrondissement.departement.region.nom', name: 'commune.arrondissement.departement.region.nom' },
                     { data: null ,orderable: false, searchable: false}
 
                 ],
@@ -64,21 +69,12 @@
                         {
                         "data": null,
                         "render": function (data, type, row) {
-                        url_e =  "{!! route('clients.edit',':id')!!}".replace(':id', data.id);
-                        url_d =  "{!! route('clients.destroy',':id')!!}".replace(':id', data.id);
-                        return '<a href='+url_e+'  class=" btn btn-primary edit " title="Modifier"><i class="far fa-edit">&nbsp;Edit</i></a>&nbsp;'+
-                        '<a class="btn btn-danger delete" title="Supprimer" href='+url_d+'><i class="fas fa-times">&nbsp;Delete</i></a>';
+                        url_e =  "{!! route('clients.create','village=:id')!!}".replace(':id', data.id);
+                        return '<a href='+url_e+'  class=" btn btn-primary " ><i class="material-icons">edit</i></a>';
                         },
                         "targets": 4
                         },
-                    // {
-                    //     "data": null,
-                    //     "render": function (data, type, row) {
-                    //         url =  "{!! route('clients.edit',':id')!!}".replace(':id', data.id);
-                    //         return check_status(data,url);
-                    //     },
-                    //     "targets": 1
-                    // }
+
                 ],
                 language: {
                   "sProcessing":     "Traitement en cours...",
@@ -111,28 +107,6 @@
                 },
               
           });
-
-          //supprimer une donnée
-          {{-- /*  $(document).on('click', '.delete', function(){
-            var id = $(this).attr('id');
-            if(confirm("Êtes-vous sûr de bien vouloir cette donnée !"))
-            {
-              $.ajax({
-                url:"{{route('clients.removedata')}}",
-                mehtod:"get",
-                data:{id:id},
-                success:function(data)
-                {
-                    alert(data);
-                    $('#table-clients').DataTable().ajax.reload();
-                }
-            })
-            }
-            else
-            {
-              return false;
-            }
-          });  */ --}}
 
       });
       </script> 

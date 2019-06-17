@@ -29,13 +29,14 @@
     <div class="container-fluid">
 
      {{--   <!-- Breadcrumbs-->  --}}
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="{{ url('/') }}">Tableau de bord</a>
-        </li>
-        <li class="breadcrumb-item active">page en cours</li>
-      </ol>
+     
 @section('content')
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="{{ url('/') }}">Tableau de bord</a>
+  </li>
+  <li class="breadcrumb-item active">page en cours</li>
+</ol>
 @include('layout.main')
    {{--   <!-- /.content-wrapper -->  --}}
 @show
