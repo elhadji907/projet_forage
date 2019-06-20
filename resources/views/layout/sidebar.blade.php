@@ -12,14 +12,14 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <h6 class="dropdown-header">Admin</h6>
-        <a class="dropdown-item" href="{{route('villages.index')}}"><p>Villages</p></a>
-        <a class="dropdown-item" href="{{route('clients.index')}}"><p>Clients</p></a>
-        <a class="dropdown-item" href="#"><p>Administrateurs</p></a>
+        <a class="dropdown-item" href="{{ route('villages.index') }}"><p>Villages</p></a>
+        <a class="dropdown-item" href="{{ route('clients.index') }}"><p>Clients</p></a>
+        <a class="dropdown-item" href="{{ route('compteurs.index') }}"><p>Compteurs</p></a>
+        <a class="dropdown-item" href="{{ route('administrateurs.index') }}"><p>Administrateurs</p></a>
         <a class="dropdown-item" href="#"><p>Comptables</p></a>
         <a class="dropdown-item" href="#"><p>Agents</p></a>
         <a class="dropdown-item" href="#"><p>Gestionnaires</p></a>
         <a class="dropdown-item" href="#"><p>Abonnements</p></a>
-        <a class="dropdown-item" href="#"><p>Compteurs</p></a>
         <a class="dropdown-item" href="#"><p>Facturation</p></a>
 
       {{--         
