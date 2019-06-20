@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Abonnement;
+use App\Agent;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
-class abonnementController extends Controller
+class agentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class abonnementController extends Controller
      */
     public function index()
     {
-        return view('abonnements.index');
+        return view('agents.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class abonnementController extends Controller
      */
     public function create()
     {
-        //
+        return view('agents.create');
     }
 
     /**
@@ -42,10 +42,10 @@ class abonnementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Abonnement  $abonnement
+     * @param  \App\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function show(Abonnement $abonnement)
+    public function show(Agent $agent)
     {
         //
     }
@@ -53,10 +53,10 @@ class abonnementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Abonnement  $abonnement
+     * @param  \App\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function edit(Abonnement $abonnement)
+    public function edit(Agent $agent)
     {
         //
     }
@@ -65,10 +65,10 @@ class abonnementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Abonnement  $abonnement
+     * @param  \App\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Abonnement $abonnement)
+    public function update(Request $request, Agent $agent)
     {
         //
     }
@@ -76,17 +76,17 @@ class abonnementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Abonnement  $abonnement
+     * @param  \App\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Abonnement $abonnement)
+    public function destroy(Agent $agent)
     {
         //
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $abonnements=Abonnement::with(['client.user','compteur'])->get();
-        return DataTables::of($abonnements)->make(true);
+        $agents=Agent::with('user')->get();
+        return Datatables::of($agents)->make(true);
     }
 }

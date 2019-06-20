@@ -9,4 +9,5 @@
   {{-- script datables pour la pagination et la recherche avec ajax --}}
   <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}"/>
 
+
   

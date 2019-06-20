@@ -20,6 +20,9 @@
 
 {{-- script datables pour la pagination et la recherche avec ajax --}}
 <script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
+
+{{-- script qrcode --}}
+<script type="text/javascript" src="{{ asset('qrcodejs-master\qrcode.min.js') }}"></script>
 @stack('scripts')
 
 

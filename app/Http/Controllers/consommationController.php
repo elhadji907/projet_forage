@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Abonnement;
+use App\Consommation;
 use Illuminate\Http\Request;
-use Yajra\Datatables\Datatables;
 
-class abonnementController extends Controller
+class consommationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class abonnementController extends Controller
      */
     public function index()
     {
-        return view('abonnements.index');
+       // return view('abonnements.index');
     }
 
     /**
@@ -42,10 +41,10 @@ class abonnementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Abonnement  $abonnement
+     * @param  \App\Consommation  $consommation
      * @return \Illuminate\Http\Response
      */
-    public function show(Abonnement $abonnement)
+    public function show(Consommation $consommation)
     {
         //
     }
@@ -53,10 +52,10 @@ class abonnementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Abonnement  $abonnement
+     * @param  \App\Consommation  $consommation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Abonnement $abonnement)
+    public function edit(Consommation $consommation)
     {
         //
     }
@@ -65,10 +64,10 @@ class abonnementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Abonnement  $abonnement
+     * @param  \App\Consommation  $consommation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Abonnement $abonnement)
+    public function update(Request $request, Consommation $consommation)
     {
         //
     }
@@ -76,17 +75,23 @@ class abonnementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Abonnement  $abonnement
+     * @param  \App\Consommation  $consommation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Abonnement $abonnement)
+    public function destroy(Consommation $consommation)
     {
         //
     }
 
-    public function list()
-    {
-        $abonnements=Abonnement::with(['client.user','compteur'])->get();
-        return DataTables::of($abonnements)->make(true);
-    }
+    public function list(Abonnement $abonnement=null)
+   {
+       if($abonnement==null){
+           $consommations=Consommation::with('compteur.abonnement.client.user')->get();
+           return DataTables::of($consommations)->make(true);
+       }else{
+           $consommations=$abonnement->compteur->consommations->load('compteur.abonnement.client.user');
+           return DataTables::of($consommations)->make(true);
+       }
+   }
+
 }

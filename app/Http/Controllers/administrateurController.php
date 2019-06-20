@@ -42,11 +42,10 @@ class administrateurController extends Controller
         $this->validate(
             $request, [
                 'matricule'     => 'required|string|max:50',
-                'nom'           => 'required|string|max:50',
                 'prenom'        => 'required|string|max:50',
+                'nom'           => 'required|string|max:50',
                 'telephone'     => 'required|string|max:50',
                 'email'         => 'required|email|max:255|unique:users,email',
-                'choixrole'     => 'required|string',
                 'mot_de_passe'  => 'required|string|max:50',
             ]
         );
@@ -70,7 +69,7 @@ class administrateurController extends Controller
         ]);
 
         $administrateur->save();
-        return redirect()->route('administrateurs.create')->with('success','utilisateur ajoutée avec succès !');
+        return redirect()->route('administrateurs.index')->with('success','utilisateur ajoutée avec succès !');
     }
 
     /**
@@ -90,9 +89,14 @@ class administrateurController extends Controller
      * @param  \App\Administrateur  $administrateur
      * @return \Illuminate\Http\Response
      */
-    public function edit(Administrateur $administrateur)
+    public function edit($id)
     {
-        //
+        
+        //$utilisateur = User::find($id);
+        $administrateur = Administrateur::find($id);
+        $utilisateur=$administrateur->user;
+        //return $utilisateur;
+        return view('administrateurs.update', compact('administrateur','utilisateur'));
     }
 
     /**
@@ -102,9 +106,22 @@ class administrateurController extends Controller
      * @param  \App\Administrateur  $administrateur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Administrateur $administrateur)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate(
+            $request, [
+                'matricule'     => 'required|string|max:50',
+                'prenom'        => 'required|string|max:50',
+                'nom'           => 'required|string|max:50',
+                'telephone'     => 'required|string|max:50',
+                'email'         => 'required|email|max:255|unique:users,email',
+                'mot_de_passe'  => 'required|string|max:50',
+            ]
+        );
+
+        $administrateur = Administrateur::find($id);
+        return $administrateur;
+        $administrateur->matricule = $request->get('matricule');
     }
 
     /**

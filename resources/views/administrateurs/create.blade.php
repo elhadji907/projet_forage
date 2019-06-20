@@ -3,17 +3,17 @@
 <div class="content">
     <div class="container col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
         <div class="container-fluid">
+            @if (session()->has('success'))
+                <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+            @endif                    
+            <div class="row pt-5"></div>
             <div class="card">
                 <div class="card-header card-header-primary text-center">
                     <h3 class="card-title">Enregistrement</h3>
                     <p class="card-category">Utilisateurs</p>
                 </div>
                 <div class="card-body">
-                        @if (session()->has('success'))
-                            <div class="alert alert-success" role="alert">{{ session('success') }}</div>
-                        @endif                    
-                        <div class="row pt-5"></div>
-                        
+                                               
                         <form method="POST" action="{{url('administrateurs')}}">
                             {{ csrf_field() }}
                                                     
@@ -29,27 +29,28 @@
                                 </small>
                             </div>
                             <div class="form-group">
-                                    <label for="input-nom"><b>Nom:</b></label>
-                                    <input type="text" name="nom" class="form-control" id="input-nom" placeholder="nom de l'utilisateur" value="{{ old('nom') }}">
-                                    <small id="emailHelp" class="form-text text-muted">
-                                            @if ($errors->has('nom'))
-                                            @foreach ($errors->get('nom') as $message)
-                                            <p class="text-danger">{{ $message }}</p>
-                                            @endforeach
-                                            @endif
-                                    </small>
-                                </div>
-                                <div class="form-group">
-                                        <label for="input-prenom"><b>Prenom:</b></label>
-                                        <input type="text" name="prenom" class="form-control" id="input-prenom" placeholder="prénom de l'utilisateur" value="{{ old('prenom') }}">
-                                        <small id="emailHelp" class="form-text text-muted">
-                                                @if ($errors->has('prenom'))
-                                                @foreach ($errors->get('prenom') as $message)
-                                                <p class="text-danger">{{ $message }}</p>
-                                                @endforeach
-                                                @endif
-                                        </small>
-                                    </div>
+                                <label for="input-prenom"><b>Prenom:</b></label>
+                                <input type="text" name="prenom" class="form-control" id="input-prenom" placeholder="prénom de l'utilisateur" value="{{ old('prenom') }}">
+                                <small id="emailHelp" class="form-text text-muted">
+                                        @if ($errors->has('prenom'))
+                                        @foreach ($errors->get('prenom') as $message)
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @endforeach
+                                        @endif
+                                </small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="input-nom"><b>Nom:</b></label>
+                                <input type="text" name="nom" class="form-control" id="input-nom" placeholder="nom de l'utilisateur" value="{{ old('nom') }}">
+                                <small id="emailHelp" class="form-text text-muted">
+                                        @if ($errors->has('nom'))
+                                        @foreach ($errors->get('nom') as $message)
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @endforeach
+                                        @endif
+                                </small>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><b>Adresse email:</b></label>
                                 <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email de l'utilisateur" value=" {{old('email')}}">
@@ -62,31 +63,31 @@
                                 </small>
                             </div>
                             <div class="form-group">
-                                    <label for="exampleInputEmail1"><b>Téléphone:</b></label>
-                                    <input type="text" name="telephone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Téléphone de l'utilisateur" value=" {{old('telephone')}}">
-                                    <small id="emailHelp" class="form-text text-muted">
-                                        @if ($errors->has('telephone'))
-                                        @foreach ($errors->get('telephone') as $message)
-                                        <p class="text-danger">{{ $message }}</p>
-                                        @endforeach
-                                        @endif
-                                    </small>
-                                </div>
-                            <div class="form-group">
-                                    <label for="exampleInputEmail1"><b>Choisir un role:</b></label>
-                                    <select name="choixrole" id="choixrole" class="form-control">
-                                        @foreach($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                        @endforeach
-                                        </select>
-                                    <small id="emailHelp" class="form-text text-muted">
-                                        @if ($errors->has('choixrole'))
-                                        @foreach ($errors->get('choixrole') as $message)
-                                        <p class="text-danger">{{ $message }}</p>
-                                        @endforeach
-                                        @endif
-                                    </small>
-                                </div>
+                                <label for="exampleInputEmail1"><b>Téléphone:</b></label>
+                                <input type="text" name="telephone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ex: +221 77 699 41 73" value="{{old('telephone')}}">
+                                <small id="emailHelp" class="form-text text-muted">
+                                    @if ($errors->has('telephone'))
+                                    @foreach ($errors->get('telephone') as $message)
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @endforeach
+                                    @endif
+                                </small>
+                            </div>
+                            {{-- <div class="form-group">
+                                <label for="exampleInputEmail1"><b>Choisir un role:</b></label>
+                                <select name="choixrole" id="choixrole" class="form-control">
+                                    @foreach($roles as $role)
+                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    @endforeach
+                                    </select>
+                                <small id="emailHelp" class="form-text text-muted">
+                                    @if ($errors->has('choixrole'))
+                                    @foreach ($errors->get('choixrole') as $message)
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @endforeach
+                                    @endif
+                                </small>
+                            </div> --}}
                             <div class="form-group">
                                 <label for="exampleInputPassword1"><b>Mot de passe:</b></label>
                                 <input type="password" name="mot_de_passe" class="form-control" id="exampleInputPassword1" placeholder="mot de passe du client">
@@ -96,7 +97,7 @@
                                 @endforeach
                                 @endif
                             </div>                           
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="submit" class="btn btn-primary"><i class="far fa-paper-plane"></i>&nbsp;Enregistrer</button>
                         </form>
                         <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
