@@ -1,21 +1,22 @@
 @extends('layout.index')
 @section('content')
-    
 
 <div class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
               <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title ">SENFORAGE</h4>
-                  <p class="card-category"> Abonnements
-                      <a href="{{route('abonnements.selectclient')}}"><div class="btn btn-warning">Nouvel Abonnement <i class="material-icons">add</i></div></a> 
-                  </p>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table" id="table-clients">
+                  <div class="card-header">
+                      <i class="fas fa-table"></i>
+                      Liste des abonnements
+                  </div>
+                <div class="card-body"> 
+                  <div class="table-responsive">                  
+                      <div align="right">
+                          <a href="{{ route('abonnements.selectclient') }}"><div class="btn btn-success">Nouveau Abonnement&nbsp;<i class="fas fa-user-plus"></i></div></a> 
+                      </div>
+                    <br />
+                    <table class="table" id="table-abonnements">
                       <thead class=" text-primary">
                         <th>
                           ID
@@ -92,7 +93,7 @@
       @push('scripts')
       <script type="text/javascript">
       $(document).ready(function () {
-          $('#table-clients').DataTable( { 
+          $('#table-abonnements').DataTable( { 
             "processing": true,
             "serverSide": true,
             "ajax": "{{route('abonnements.list')}}",

@@ -16,15 +16,26 @@
 }); */
 
 Route::get('/', function () {
+    return view('bienvenue');
+});
+
+Route::get('/bienvenue', function () {
     return view('layout.index');
 });
 
 Route::get('/table', function () {
     return view('layout.tables');
 });
-Route::get('/login1', function () {
-    return view('layout.login1');
+
+Route::get('/register', function () {
+    return view('layout.register');
 });
+
+Route::get('/login', function () {
+    return view('layout.login');
+});
+
+
 
 /*
 taper cette commande pour afficher le contenu ci dessous
@@ -48,10 +59,11 @@ Route::get('/compteurs/list', 'compteurController@list')->name('compteurs.list')
 Route::get('/administrateurs/list', 'administrateurController@list')->name('administrateurs.list');
 Route::get('/agents/list', 'agentController@list')->name('agents.list');
 Route::get('/agents/list', 'agentController@list')->name('agents.list');
-Route::get('/abonnements/selectcompteur', 'AbonnementController@selectcompteur')->name('abonnements.selectcompteur');
-Route::get('/abonnements/selectclient', 'AbonnementController@selectclient')->name('abonnements.selectclient');
+Route::get('/abonnements/selectcompteur', 'abonnementController@selectcompteur')->name('abonnements.selectcompteur');
+Route::get('/abonnements/selectclient', 'abonnementController@selectclient')->name('abonnements.selectclient');
 Route::get('/abonnements/list', 'abonnementController@list')->name('abonnements.list');
-Route::get('/consommations/list/{abonnement?}','ConsommationController@list')->name('consommations.list');
+Route::get('/consommations/list/{abonnement?}','consommationController@list')->name('consommations.list');
+Route::get('/compteurs/listfree', 'compteurController@listfree')->name('compteurs.listfree');
 
 Route::resource('/villages', 'VillageController');
 Route::resource('/clients', 'clientController');
@@ -59,4 +71,25 @@ Route::resource('/compteurs', 'compteurController');
 Route::resource('/administrateurs', 'administrateurController');
 Route::resource('/agents', 'agentController');
 Route::resource('/abonnements', 'abonnementController');
-Route::resource('/consommations', 'ConsommationController');
+Route::resource('/consommations', 'consommationController');
+
+
+//route carbon
+
+// use Carbon\Carbon;
+
+// Route::get('carbon', function () {
+//     $date = Carbon::now();
+//     dump($date);
+//     $date->addDays(3);
+//     dump($date);
+// });
+
+use Illuminate\Support\Facades\Date;
+
+Route::get('carbon', function () {
+    $date = Date::now();
+    dump($date);
+    $newDate = $date->copy()->addDays(7);
+    dump($newDate);
+});

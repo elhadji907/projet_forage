@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Abonnement;
+use App\Compteur;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -89,4 +90,10 @@ class abonnementController extends Controller
         $abonnements=Abonnement::with(['client.user','compteur'])->get();
         return DataTables::of($abonnements)->make(true);
     }
+
+    public function listfree(){
+        $compteurs=Compteur::doesntHave('abonnement')->get();
+        return DataTables::of($compteurs)->make(true);
+ }
+ 
 }

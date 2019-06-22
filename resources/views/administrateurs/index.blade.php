@@ -6,6 +6,11 @@
             @endif 
           <div class="row">
             <div class="col-md-12">
+                @if (session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+                @endif
               <div class="card"> 
                   <div class="card-header">
                       <i class="fas fa-table"></i>
@@ -50,6 +55,30 @@
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="modal_delete_administrateur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form method="POST" action="" id="form-delete-administrateur">
+          @csrf
+          @method('DELETE')
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLabel">Êtes-vous sûr de bien vouloir supprimer cet admin ?</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                cliquez sur close pour annuler
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger"><i class="fas fa-times">&nbsp;Delete</i></button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
       @endsection
 
       @push('scripts')
@@ -76,18 +105,10 @@
                         url_e =  "{!! route('administrateurs.edit',':id')!!}".replace(':id', data.id);
                         url_d =  "{!! route('administrateurs.destroy',':id')!!}".replace(':id', data.id);
                         return '<a href='+url_e+'  class=" btn btn-primary edit " title="Modifier"><i class="far fa-edit">&nbsp;Edit</i></a>&nbsp;'+
-                        '<a class="btn btn-danger delete" title="Supprimer" href='+url_d+'><i class="fas fa-times">&nbsp;Delete</i></a>';
+                        '<div class="btn btn-danger delete btn_delete_administrateur" title="Supprimer" data-href='+url_d+'><i class="fas fa-times">&nbsp;Delete</i></div>';
                         },
                         "targets": 6
                         },
-                    // {
-                    //     "data": null,
-                    //     "render": function (data, type, row) {
-                    //         url =  "{!! route('clients.edit',':id')!!}".replace(':id', data.id);
-                    //         return check_status(data,url);
-                    //     },
-                    //     "targets": 1
-                    // }
                 ],
                 language: {
                   "sProcessing":     "Traitement en cours...",
@@ -121,65 +142,14 @@
               
           });
 
-          //supprimer une donnée
-          {{-- /*  $(document).on('click', '.delete', function(){
-            var id = $(this).attr('id');
-            if(confirm("Êtes-vous sûr de bien vouloir cette donnée !"))
-            {
-              $.ajax({
-                url:"{{route('clients.removedata')}}",
-                mehtod:"get",
-                data:{id:id},
-                success:function(data)
-                {
-                    alert(data);
-                    $('#table-clients').DataTable().ajax.reload();
-                }
-            })
-            }
-            else
-            {
-              return false;
-            }
-          });  */ --}}
-
-      });
-{{--  
-      $(function() {
- 
-        // Récupération des id pour pays et role
-        var country_id = {{ old('country', $author->city->country->id) }};
-        var city_id = {{ old('city', $author->city->id) }};
-     
-        // Sélection du pays
-        $('#country').val(country_id).prop('selected', true);
-        // Synchronisation des villes
-        cityUpdate(country_id);
-     
-        // Changement de pays
-        $('#country').on('change', function(e) {
-            var country_id = e.target.value;
-            city_id = false;
-            cityUpdate(country_id);
+          
+        $('#table-administrateurs').off('click', '.btn_delete_administrateur').on('click', '.btn_delete_administrateur',
+        function() { 
+          var href=$(this).data('href');
+          $('#form-delete-administrateur').attr('action', href);
+          $('#modal_delete_administrateur').modal();
         });
-     
-        // Requête Ajax pour les villes
-        function cityUpdate(countryId) {
-            $.get('{{ url('cities') }}/'+ countryId + "'", function(data) {
-                $('#city').empty();
-                $.each(data, function(index, cities) {
-                    $('#city').append($('<option>', { 
-                        value: cities.id,
-                        text : cities.name 
-                    }));
-                });
-                if(city_id) {
-                    $('#city').val(city_id).prop('selected', true);
-                }
-            });
-        }
-         
-    });  --}}
-    </script>
-      </script> 
+      });
+      
+  </script> 
   @endpush

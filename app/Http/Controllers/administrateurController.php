@@ -46,7 +46,14 @@ class administrateurController extends Controller
                 'nom'           => 'required|string|max:50',
                 'telephone'     => 'required|string|max:50',
                 'email'         => 'required|email|max:255|unique:users,email',
-                'mot_de_passe'  => 'required|string|max:50',
+                'password'  => 'required|confirmed|string|min:8|max:50',
+                'password_confirmation'=>'required',
+            ],
+            [
+                'password.min'=>'Pour des raisons de sécurité, votre mot de passe doit faire au moins :min caractères.'
+            ],
+            [
+                'password.max'=>'Pour des raisons de sécurité, votre mot de passe ne doit pas dépasser :max caractères.'
             ]
         );
         //return view('administrateurs.index');
@@ -62,7 +69,7 @@ class administrateurController extends Controller
         ]);
         
         $utilisateur->save();
-
+        
         $administrateur = new Administrateur([
             'matricule'     =>     $request->input('matricule'),
             'users_id'      =>     $utilisateur->id
@@ -96,7 +103,7 @@ class administrateurController extends Controller
         $administrateur = Administrateur::find($id);
         $utilisateur=$administrateur->user;
         //return $utilisateur;
-        return view('administrateurs.update', compact('administrateur','utilisateur'));
+        return view('administrateurs.update', compact('administrateur','utilisateur','id'));
     }
 
     /**
@@ -109,19 +116,34 @@ class administrateurController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate(
-            $request, [
+            $request, 
+            [
                 'matricule'     => 'required|string|max:50',
                 'prenom'        => 'required|string|max:50',
                 'nom'           => 'required|string|max:50',
                 'telephone'     => 'required|string|max:50',
-                'email'         => 'required|email|max:255|unique:users,email',
-                'mot_de_passe'  => 'required|string|max:50',
-            ]
-        );
+                'email'         => "required|email|max:255|unique:users,email,".$id,
+            ]);
 
         $administrateur = Administrateur::find($id);
-        return $administrateur;
-        $administrateur->matricule = $request->get('matricule');
+        $utilisateur=$administrateur->user;
+
+        $roles_id = Role::where('name','Administrateur')->first()->id;
+
+        $utilisateur->name           =      $request->input('nom');
+        $utilisateur->firstname      =      $request->input('prenom');
+        $utilisateur->email          =      $request->input('email');
+        $utilisateur->telephone      =      $request->input('telephone');
+        $utilisateur->roles_id       =      $roles_id;
+
+        $utilisateur->save();
+
+        $administrateur->matricule   =     $request->input('matricule');
+        $administrateur->users_id    =     $utilisateur->id;
+
+        $administrateur->save();
+        
+        return redirect()->route('administrateurs.index')->with('success','utilisateur modifier avec succès !');
     }
 
     /**
@@ -132,7 +154,10 @@ class administrateurController extends Controller
      */
     public function destroy(Administrateur $administrateur)
     {
-        //
+        $administrateur->delete();
+        $message = $administrateur->user->firstname.' '.$administrateur->user->name.' a été supprimé(e)';
+        return redirect()->route('administrateurs.index')->with(compact('message'));
+        //return $administrateur;
     }
 
     public function list(Request $request)

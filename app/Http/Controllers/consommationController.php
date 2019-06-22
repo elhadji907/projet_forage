@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Consommation;
+use App\Abonnement;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class consommationController extends Controller
 {
@@ -14,7 +16,7 @@ class consommationController extends Controller
      */
     public function index()
     {
-       // return view('abonnements.index');
+        return view('consommations.index');
     }
 
     /**

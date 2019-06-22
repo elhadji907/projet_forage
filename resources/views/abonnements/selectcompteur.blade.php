@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table" id="table-clients">
+                    <table class="table" id="table_compteurs">
                       <thead class=" text-primary">
                         <th>
                           ID
@@ -54,7 +54,7 @@
       @push('scripts')
       <script type="text/javascript">
       $(document).ready(function () {
-          $('#table-clients').DataTable( { 
+          $('#table_compteurs').DataTable( { 
             "processing": true,
             "serverSide": true,
             "ajax": "{{route('compteurs.listfree')}}",

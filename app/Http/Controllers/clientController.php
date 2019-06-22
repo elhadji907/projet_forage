@@ -70,9 +70,12 @@ class clientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit($id)
     {
-        //
+        $client = Client::find($id);
+        //return $client;
+        $utilisateur=$client->user;
+        return view('clients.update', compact('client','utilisateur','id'));
     }
 
     /**
@@ -82,9 +85,15 @@ class clientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, Client $id)
     {
-        //
+        $this->validate(
+            $request, 
+            [
+                'prenom'        => 'required|string|max:50',
+                'nom'           => 'required|string|max:50',
+                'email'         => "required|email|max:255|unique:users,email,".$id,
+            ]);
     }
 
     /**
@@ -95,7 +104,9 @@ class clientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        $message = $client->user->firstname.' '.$client->user->name.' a été supprimé(e)';
+        return redirect()->route('clients.index')->with(compact('message'));
     }
 
     //lister les client en utilisant la méthode ajax

@@ -18,6 +18,7 @@
         <a class="dropdown-item" href="{{ route('administrateurs.index') }}"><p>Administrateurs</p></a>
         <a class="dropdown-item" href="{{ route('agents.index') }}"><p>Agents</p></a>
         <a class="dropdown-item" href="{{ route('abonnements.index') }}"><p>Abonnements</p></a>
+        <a class="dropdown-item" href="{{ route('consommations.index') }}"><p>Consommation</p></a>
         <a class="dropdown-item" href="#"><p>Comptables</p></a>
         <a class="dropdown-item" href="#"><p>Gestionnaires</p></a>
         <a class="dropdown-item" href="#"><p>Facturation</p></a>
@@ -36,7 +37,7 @@
     </li>
      
     <li class="nav-item">
-      <a class="nav-link" href="{{ url('/login1') }}">
+      <a class="nav-link" href="{{ url('/login') }}">
         <i class="fas fa-sign-in-alt"></i>
         <span>Connexion</span></a>
     </li>
