@@ -16,7 +16,8 @@ class VillageController extends Controller
      */
     public function index()
     {
-        $villages=Village::all()->load(['chef.user','commune.arrondissement.departement.region'])->paginate(10);
+        // $villages=Village::all()->load(['chef.user','commune.arrondissement.departement.region'])->where('chef.user','!=',null)->paginate(10);
+        $villages=Village::all()->load(['chef.user','commune.arrondissement.departement.region'])->where('chef.user','!=',null);
         return view('villages.index',compact('villages'));
     }
 
@@ -48,8 +49,11 @@ class VillageController extends Controller
             'chef_id'     =>  $request->get('nom_du_chef_de_village'),
             'communes_id'     =>  $request->get('nom_de_la_commune')
         ]);
+
+        $message = "Village ajouter avec succès";
+
         $village->save();
-        return redirect()->route('villages.index')->with('success', 'Village ajouter avec succès');
+        return redirect()->route('villages.index')->with('success', $message);
     }
 
     /**

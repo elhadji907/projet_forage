@@ -28,7 +28,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    /* protected $redirectTo = '/home'; */
+    protected $redirectTo = '/bienvenue';
 
     /**
      * Create a new controller instance.
@@ -49,7 +50,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'firstname' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
+            'telephone' => ['required', 'string', 'min:9', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -63,10 +66,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $roles_id = 2;
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'firstname' => $data['firstname'],
+            'name'      => $data['name'],
+            'telephone' => $data['telephone'],
+            'email'     => $data['email'],
+            'password'  => Hash::make($data['password']),
+            'roles_id'  => $roles_id,
         ]);
     }
 }

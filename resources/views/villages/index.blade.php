@@ -18,9 +18,9 @@
                   <div class="table-responsive">
                     <div align="right">
                       <a href="{{route('villages.create')}}"><div class="btn btn-success">Nouveau Village&nbsp;<i class="fas fa-plus"></i></div></a> 
-                  </div>
+                    </div>
                       <br />
-                    <table class="table table-bordered table-striped" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                       <thead class="table-dark">
                         <tr>
                           <th>ID</th>
@@ -35,7 +35,7 @@
                           <th>Nom</th>
                           <th>Chef</th>
                           <th>Info</th>
-                        <tr>
+                        </tr>
                       </tfoot>
                       <tbody>
                           @foreach ($villages as $village)
@@ -60,7 +60,7 @@
                       </tbody>
                      
                     </table>
-                    {{ $villages->links() }}
+                    {{-- {{ $villages->links() }} --}}
                   </div>
                 </div>
               </div>

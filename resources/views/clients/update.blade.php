@@ -13,7 +13,7 @@
                     <input type="hidden" name="_method" value="PATCH" /> 
                     <div class="form-group">
                         <label for="input-prenom">Prenom</label>
-                        <input type="text" name="preprenom" class="form-control" id="input-prenom" placeholder="prenom du client" value="{{ $utilisateur->firstname }}">
+                        <input type="text" name="prenom" class="form-control" id="input-prenom" placeholder="prenom du client" value="{{ $utilisateur->firstname }}">
                         <small id="input-prenom-help" class="form-text text-muted">
                             @if ($errors->has('prenom'))
                             <div class="alert alert-danger">

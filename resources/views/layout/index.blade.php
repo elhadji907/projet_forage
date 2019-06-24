@@ -10,7 +10,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gestion - Forage</title>
+  {{-- <title>SenForafe</title> --}}
+  <title>
+    {{ config('app.name', 'SenForage') }}
+  </title>
+  <link rel="icon" href="{!! asset('vendor/icon.ico') !!}"/>
 
   {{--  <!-- Custom fonts for this template-->  --}}
   @include('layout.style')
@@ -34,9 +38,9 @@
 @section('content')
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    <a href="{{ url('/') }}">Tableau de bord</a>
+    <a href="{{ url('/bienvenue') }}">Tableau de bord</a>
   </li>
-  <li class="breadcrumb-item active">page en cours</li>
+  <li class="breadcrumb-item active">Accueil</li>
 </ol>
 @include('layout.main')
    {{--   <!-- /.content-wrapper -->  --}}

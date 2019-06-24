@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Schema;
+
 
 use Illuminate\Support\DateFactory;
 use Carbon\CarbonImmutable;
@@ -27,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Schema::defaultStringLength(191);
     }
 }

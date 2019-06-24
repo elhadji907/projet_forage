@@ -26,14 +26,14 @@ Route::get('/bienvenue', function () {
 Route::get('/table', function () {
     return view('layout.tables');
 });
-
+/* 
 Route::get('/register', function () {
     return view('layout.register');
 });
 
 Route::get('/login', function () {
     return view('layout.login');
-});
+}); */
 
 
 
@@ -42,6 +42,8 @@ taper cette commande pour afficher le contenu ci dessous
 php artisan make:auth
 */
 Auth::routes();
+
+/* Auth::routes(['verify' => true]); */
 
 Route::get( '/clients.selectvillage', function(){
     return view('clients.selectvillage');
@@ -56,22 +58,23 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/clients/list', 'clientController@list')->name('clients.list');
 Route::get('/villages/list', 'VillageController@list')->name('villages.list');
 Route::get('/compteurs/list', 'compteurController@list')->name('compteurs.list');
-Route::get('/administrateurs/list', 'administrateurController@list')->name('administrateurs.list');
-Route::get('/agents/list', 'agentController@list')->name('agents.list');
-Route::get('/agents/list', 'agentController@list')->name('agents.list');
-Route::get('/abonnements/selectcompteur', 'abonnementController@selectcompteur')->name('abonnements.selectcompteur');
+Route::get('/administrateurs/list', 'administrateurController@list')->name('administrateurs.list');Route::get('/abonnements/selectcompteur', 'abonnementController@selectcompteur')->name('abonnements.selectcompteur');
 Route::get('/abonnements/selectclient', 'abonnementController@selectclient')->name('abonnements.selectclient');
 Route::get('/abonnements/list', 'abonnementController@list')->name('abonnements.list');
 Route::get('/consommations/list/{abonnement?}','consommationController@list')->name('consommations.list');
 Route::get('/compteurs/listfree', 'compteurController@listfree')->name('compteurs.listfree');
+Route::get('/factures/list', 'FactureController@list')->name('factures.list');
+Route::get('/agents/list', 'agentController@list')->name('agents.list');
 
 Route::resource('/villages', 'VillageController');
 Route::resource('/clients', 'clientController');
 Route::resource('/compteurs', 'compteurController');
 Route::resource('/administrateurs', 'administrateurController');
-Route::resource('/agents', 'agentController');
 Route::resource('/abonnements', 'abonnementController');
 Route::resource('/consommations', 'consommationController');
+Route::resource('/factures', 'FactureController');
+Route::resource('/agents', 'agentController');
+
 
 
 //route carbon
