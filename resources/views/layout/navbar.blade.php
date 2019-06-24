@@ -50,11 +50,12 @@
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#"> {{ Auth::user()->firstname }} {{ Auth::user()->name }}</a>
             <a class="dropdown-item" href="#"><i class="fas fa-cog"></i>&nbsp;Réglages</a>
             <a class="dropdown-item" href="#"><i class="fab fa-adn"></i>&nbsp;Activités</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-sign-out-alt"></i>&nbsp;
-               Déconnexion
+            Déconnexion
             </a>
           </div>
       </li>

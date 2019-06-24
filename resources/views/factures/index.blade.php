@@ -59,10 +59,10 @@
             columns: [
                     { data: 'id', name: 'id' },
                     { data: 'montant', name: 'montant' },
-                    { data: 'firstname', name: 'firstname' },
-                    { data: 'name', name: 'name' },
-                    { data: 'email', name: 'email' },
-                    { data: 'telephone', name: 'telephone' },
+                    { data: 'user.firstname', name: 'user.firstname' },
+                    { data: 'user.name', name: 'user.name' },
+                    { data: 'user.email', name: 'user.email' },
+                    { data: 'user.telephone', name: 'user.telephone' },
                     { data: null ,orderable: false, searchable: false}
 
                 ],
