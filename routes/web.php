@@ -19,9 +19,12 @@ Route::get('/', function () {
     return view('bienvenue');
 });
 
-Route::get('/bienvenue', function () {
+/* Route::get('/accueil', function () {
     return view('layout.index');
-});
+}); */
+
+
+Route::get('/accueil', 'AccueilController@accueil');
 
 Route::get('/table', function () {
     return view('layout.tables');
@@ -45,16 +48,18 @@ Auth::routes();
 
 /* Auth::routes(['verify' => true]); */
 
-Route::get( '/clients.selectvillage', function(){
-    return view('clients.selectvillage');
+Route::get( '/clients.selectvillage', function()
+{
+return view('clients.selectvillage');
 })->name('clients.selectvillage');
 
-Route::get( '/compteurs.selectclient', function(){
+Route::get( '/compteurs.selectclient', function()
+{
     return view('compteurs.selectclient');
 })->name('compteurs.selectclient');
 
  
-Route::get('/home', 'HomeController@index')->name('home');
+/* Route::get('/home', 'HomeController@index')->name('home'); */
 Route::get('/clients/list', 'clientController@list')->name('clients.list');
 Route::get('/villages/list', 'VillageController@list')->name('villages.list');
 Route::get('/compteurs/list', 'compteurController@list')->name('compteurs.list');

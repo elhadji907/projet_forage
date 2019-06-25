@@ -10,8 +10,6 @@
         <div class="modal-body">Sélectionnez Déconnexion ci-dessous si vous êtes prêt à mettre fin à votre session en cours.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal"><i class="fas fa-times"></i>&nbsp;annuler</button>
-          {{--  <a class="btn btn-primary" href="{{ url('/') }}"><i class="fas fa-sign-out-alt"></i>&nbsp;Déconnexion</a>   --}}  
-
           <a class="btn btn-primary" href="{{ route('logout') }}"
           onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">

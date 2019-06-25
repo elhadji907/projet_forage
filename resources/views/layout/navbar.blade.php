@@ -18,9 +18,9 @@
       </div>
     </form>
 
-    <!-- Navbar -->
+   {{--  <!-- Navbar --> --}}
     <ul class="navbar-nav ml-auto ml-md-0">
-      <li class="nav-item dropdown no-arrow mx-1">
+     {{--  <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell fa-fw"></i>
           <span class="badge badge-danger">9+</span>
@@ -33,6 +33,7 @@
         </div>
       </li>
       <li class="nav-item dropdown no-arrow mx-1">
+        
         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-envelope fa-fw"></i>
           <span class="badge badge-danger">7</span>
@@ -41,22 +42,36 @@
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Something</a>
         </div>
-      </li>
+      </li> --}}
 
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#"> {{ Auth::user()->firstname }} {{ Auth::user()->name }}</a>
+            @guest            
+              <a class="dropdown-item" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>&nbsp;{{ __("Se connecter") }}</a>             
+              @if (Route::has('register'))               
+              <a class="dropdown-item" href="{{ route('register') }}">{{ __("S'inscrire") }}</a>               
+              @endif
+              @else
+              <div class="text-center">
+                image ici
+              </div>
+            <a class="dropdown-item" href="#"> 
+              {{ Auth::user()->firstname }}
+               {{ Auth::user()->name }}
+            </a>
             <a class="dropdown-item" href="#"><i class="fas fa-cog"></i>&nbsp;Réglages</a>
             <a class="dropdown-item" href="#"><i class="fab fa-adn"></i>&nbsp;Activités</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-sign-out-alt"></i>&nbsp;
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+              <i class="fas fa-sign-out-alt"></i>&nbsp;
             Déconnexion
             </a>
+            @endguest
           </div>
       </li>
     </ul>
