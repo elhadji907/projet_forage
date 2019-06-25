@@ -100,4 +100,16 @@ class User extends Authenticatable
 	{
 		return $this->hasOne(\App\Gestionnaire::class, 'users_id');
 	}
+
+
+	//gestion des roles
+	public function hasRole($roleName)
+	{
+		return $this->role->name === $roleName;
+	}
+
+	public function hasAnyRoles($roles)
+	{
+		return in_array($this->role->name, $roles);
+	}
 }

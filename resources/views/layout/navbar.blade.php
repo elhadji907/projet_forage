@@ -53,14 +53,11 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             @guest            
               <a class="dropdown-item" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>&nbsp;{{ __("Se connecter") }}</a>             
-              @if (Route::has('register'))               
+              @if (Route::has('register'))             
               <a class="dropdown-item" href="{{ route('register') }}">{{ __("S'inscrire") }}</a>               
               @endif
               @else
-              <div class="text-center">
-                image ici
-              </div>
-            <a class="dropdown-item" href="#"> 
+              <a class="dropdown-item" href="#"> 
               {{ Auth::user()->firstname }}
                {{ Auth::user()->name }}
             </a>
