@@ -14,7 +14,7 @@
             </div>
             @endif
             <div class="card card-header">
-                <div class="card-header text-center bg-primary text-light">{{ __('Réinitialiser le mot de passe') }}</div>
+                <div class="card-header text-center bg-info text-white rounded-pill">{{ __('Réinitialiser le mot de passe') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">

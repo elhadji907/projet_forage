@@ -24,7 +24,6 @@
 <body id="page-top">
 
 @include('layout.navbar')
-
   <div id="wrapper">
 
    {{--   <!-- Sidebar -->  --}}
@@ -38,7 +37,7 @@
 @section('content')
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    <a href="{{ url('/bienvenue') }}">Tableau de bord</a>
+    <a href="{{ url('/accueil') }}">Tableau de bord</a>
   </li>
   <li class="breadcrumb-item active">Accueil</li>
 </ol>

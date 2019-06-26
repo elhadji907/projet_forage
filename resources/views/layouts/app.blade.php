@@ -10,15 +10,22 @@
     <title>{{ config('app.name', 'SenForage') }}</title>
     <link rel="icon" href="{!! asset('vendor/icon.ico') !!}"/>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+  {{-- <!-- Page level plugin CSS--> --}}
+  <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
+
+ {{--  <!-- Custom styles for this template--> --}}
+  <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
+
+  {{-- script datables pour la pagination et la recherche avec ajax --}}
+  <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}"/>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   {{--   <!-- Styles -->  --}}
+       {{--   <link href="{{ asset('css/app.css') }}" rel="stylesheet">  --}}
 
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 </head>
@@ -91,4 +98,6 @@
         </main>
     </div>
 </body>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
 </html>

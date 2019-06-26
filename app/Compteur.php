@@ -6,6 +6,7 @@
  */
 
 namespace App;
+use App\Facture;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -53,5 +54,38 @@ class Compteur extends Eloquent
 	public function consommations()
 	{
 		return $this->hasMany(\App\Consommation::class, 'compteurs_id');
+	}
+
+	//foncton ajouter pour l'édition d'une facture
+
+	public function getNewConsommationAttribute(){
+		return $this->consommations->where('facture','=',null);
+	}
+
+	public function generateFacture(){
+		/* creer une facture
+			afficher des consommations
+			affectation client
+			afficher client
+			calcul de montant total
+			calcul de la valeur total 
+		*/
+		$nouvelle_consommation = $this->getNewConsommationAttribute();
+		if ($nouvelle_consommation->count() > 0) {
+			$facture = new Facture;			 
+			$facture->details="generée automatiquement";
+			$facture->save();
+			$valeur=0;
+			foreach ($nouvelle_consommation as $conso) {
+				$valeur += $conso->valeur;
+			}
+			$facture->valeur_totale_consomme = $valeur;
+			$facture->montant = $valeur*3; //3 est le prix du littre
+			$facture->save();
+			$facture->consommations()->saveMany($nouvelle_consommation);
+			
+			return $facture;
+		}
+		return null;
 	}
 }

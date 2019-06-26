@@ -1,6 +1,6 @@
 <ul class="sidebar navbar-nav">
     <li class="nav-item active">
-      <a class="nav-link" href="{{ url('/bienvenue') }}">
+      <a class="nav-link" href="{{ url('/accueil') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Tableau de bord</span>
       </a>
@@ -11,7 +11,9 @@
         <span>Pages</span>
       </a>
       <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <h6 class="dropdown-header">NAVIGUER ICI</h6>
+        <a class="dropdown-header d-inline-block text-truncate" style="max-width: 200px;" href="#">
+          {{ Auth::user()->email }}
+        </a>
         @roles('Gestionnaire|Administrateur')
         <a class="dropdown-item" href="{{ route('villages.index') }}"><p>Villages</p></a>
         <a class="dropdown-item" href="{{ route('clients.index') }}"><p>Clients</p></a>

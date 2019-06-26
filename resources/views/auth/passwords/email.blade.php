@@ -14,7 +14,7 @@
             </div>
             @endif
             <div class="card card-header">
-                <div class="card-header text-center bg-primary text-light">{{ __('ENVOYER LE LIEN DE REINITIALISATION DU MOT DE PASSE') }}</div>
+                <div class="card-header text-center bg-info text-white rounded-pill">{{ __('ENVOYER LE LIEN DE REINITIALISATION DU MOT DE PASSE') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))

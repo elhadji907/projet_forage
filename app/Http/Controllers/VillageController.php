@@ -9,6 +9,17 @@ use Yajra\Datatables\Datatables;
 
 class VillageController extends Controller
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //roles
+        $this->middleware('auth');
+        $this->middleware('roles:Administrateur');
+    }
     /**
      * Display a listing of the resource.
      *

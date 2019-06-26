@@ -1,12 +1,15 @@
 @extends('layout.index')
 @section('content')
 <div class="content">
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-header card-header-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+        <div class="card card-header">
+            {{--  <div class="card-header card-header-primary">
                 <h3 class="card-title">Enregistrement</h3>
                 <p class="card-category">Clients</p>
-            </div>
+            </div>  --}}
+            <div class="card-header text-center bg-info text-white rounded-pill">{{ __('Enregistrement Clients') }}</div>
             <div class="card-body">
                     <div class="row pt-5 pl-5">
                         <h4>
@@ -17,15 +20,15 @@
                     <div class="row pt-5"></div>
                     
                     <form method="POST" action="{{ route('clients.store') }}">
-                        {{ csrf_field() }}
+                        @csrf
                         
                         <input type="hidden" name="village" value="{{$village->id}}" class="form-control" name="inputName" id="inputName" placeholder="">
                         
                         <div class="form-group">
                             <label for="input-nom">Nom</label>
-                            <input type="text" name="nom" class="form-control" id="input-nom" placeholder="nom du client" value="{{ old('nom') }}">
+                            <input type="text" name="nom" class="form-control{{ $errors->get('nom') ? ' is-invalid' : '' }}" id="input-nom" placeholder="nom du client" value="{{ old('nom') }}">
                             <small id="input-nom-help" class="form-text text-muted">
-                                @if ($errors->has('nom'))
+                               {{--   @if ($errors->has('nom'))
                                 <div class="alert alert-danger">
                                     <ul>
                                         @foreach ($errors->get('nom') as $message)
@@ -33,12 +36,17 @@
                                         @endforeach
                                     </ul>
                                 </div>
+                                @endif  --}}
+                                @if ($errors->has('nom'))
+                                @foreach ($errors->get('nom') as $message)
+                                <p class="text-danger">{{ $message }}</p>
+                                @endforeach
                                 @endif
                             </small>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email du client" value=" {{old('email')}}">
+                            <input type="email" name="email" class="form-control{{ $errors->get('email') ? ' is-invalid' : '' }}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email du client" value=" {{old('email')}}">
                             <small id="emailHelp" class="form-text text-muted">
                                 @if ($errors->has('email'))
                                 @foreach ($errors->get('email') as $message)
@@ -49,7 +57,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="mot de passe du client">
+                            <input type="password" name="password" class="form-control{{ $errors->get('password') ? ' is-invalid' : '' }}" id="exampleInputPassword1" placeholder="mot de passe du client">
                             @if ($errors->has('password'))
                             @foreach ($errors->get('password') as $message)
                             <p class="text-danger">{{ $message }}</p>
@@ -108,5 +116,7 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
     </div>
     @endsection

@@ -26,7 +26,7 @@
 
           <main role="main" class="inner cover">
             <h1 class="cover-heading">TEST DES ROLES</h1>
-            <p class="lead">Interface de redirection vers un role de l'application avec un utilisateur par defaut</p>
+            <p class="lead">Interface de redirection vers un role de lapplication avec un utilisateur par defaut</p>
             <p class="lead">
               <!-- <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
               <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
@@ -44,6 +44,7 @@
                       <a href="{{route('loginfor','Gestionnaire')}}" class="btn btn-lg btn-secondary">Gestionnaire</a>
                       <a href="{{route('loginfor','Client')}}" class="btn btn-lg btn-secondary">Client</a>
                       <a href="{{route('loginfor','Comptable')}}" class="btn btn-lg btn-secondary">Comptable</a>
+                      <a href="{{route('loginfor','Agent')}}" class="btn btn-lg btn-secondary">Agent</a>
                   </div>
                 </div>
               </div>
@@ -53,7 +54,11 @@
 
           <footer class="mastfoot mt-auto">
             <div class="inner">
-              <p>&copy; <a href="https://getbootstrap.com/"> < / ></a>, by <a href="#">Dev</a>.</p>
+              <p>&copy;
+                 {{-- <a href="https://getbootstrap.com/"> 
+                  < / ></a>, by <a href="#">Dev</a> --}}
+                  ONFP-I3T 2019.
+                </p>
             </div>
           </footer>
         </div>

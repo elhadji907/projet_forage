@@ -4,26 +4,26 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            
+           
             @if(count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
-                @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
+            
+                <li> les champs <span class="alert-danger">(*)</span> sont obligatoires </li>
+               
                 </ul>
             </div>
-            @endif
+            @endif 
             <div class="card card-header">
-                <div class="card-header text-center bg-primary text-white">{{ __('INSCRIPTION') }}</div>
+                <div class="card-header text-center bg-info text-white rounded-pill">{{ __('INSCRIPTION') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Prénom') }}</label>
-
+                            <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Prénom') }}(<span class="text-danger">*</span>)</label>
+                            
                             <div class="col-md-6">
                                 <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}">
 
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}(<span class="text-danger">*</span>)</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="telephone" class="col-md-4 col-form-label text-md-right">{{ __('Téléphone') }}</label>
+                            <label for="telephone" class="col-md-4 col-form-label text-md-right">{{ __('Téléphone') }}(<span class="text-danger">*</span>)</label>
 
                             <div class="col-md-6">
                                 <input id="telephone" type="text" class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}" name="telephone" value="{{ old('telephone') }}" placeholder="ex: 776994173">
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __(' Addresse E-Mail') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __(' Addresse E-Mail') }}(<span class="text-danger">*</span>)</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}">
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}(<span class="text-danger">*</span>)</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
@@ -91,10 +91,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe (confirmation)') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmation') }}(<span class="text-danger">*</span>)</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Répéter votre mot de passe">
                             </div>
                         </div>
 

@@ -67,6 +67,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+    flash("Vous êtes inscrit(e) avec succès !")->success();
         //$roles_id = 2;
         $role = Role::where('name','Client')->first()->id;
         return User::create([
