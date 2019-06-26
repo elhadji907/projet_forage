@@ -12,17 +12,23 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <h6 class="dropdown-header">NAVIGUER ICI</h6>
+        @roles('Gestionnaire|Administrateur')
         <a class="dropdown-item" href="{{ route('villages.index') }}"><p>Villages</p></a>
         <a class="dropdown-item" href="{{ route('clients.index') }}"><p>Clients</p></a>
         <a class="dropdown-item" href="{{ route('compteurs.index') }}"><p>Compteurs</p></a>
         <a class="dropdown-item" href="{{ route('administrateurs.index') }}"><p>Administrateurs</p></a>
+        @endroles
+        @roles('Administrateur')
         <a class="dropdown-item" href="{{ route('agents.index') }}"><p>Agents</p></a>
         <a class="dropdown-item" href="{{ route('abonnements.index') }}"><p>Abonnements</p></a>
         <a class="dropdown-item" href="{{ route('consommations.index') }}"><p>Consommation</p></a>
         <a class="dropdown-item" href="{{ route('factures.index') }}"><p>Factures</p></a>
         <a class="dropdown-item" href="{{ route('factures.index') }}"><p>Réglement</p></a>
         <a class="dropdown-item" href="#"><p>Comptables</p></a>
+        @endroles
+
         <a class="dropdown-item" href="#"><p>Gestionnaires</p></a>
+
       </div>
     </li>
     <li class="nav-item active">

@@ -58,7 +58,7 @@ Route::group([
     {
         Route::get('/clients.selectvillage', function() { return view('clients.selectvillage'); })->name('clients.selectvillage');
         Route::get( '/compteurs.selectclient', function() { return view('compteurs.selectclient'); })->name('compteurs.selectclient');
-        Route::get('/accueil', 'AccueilController@accueil');
+        Route::get('/accueil', 'AccueilController@accueil')->name('accueil');
         Route::get('/clients/list', 'clientController@list')->name('clients.list');
         Route::get('/villages/list', 'VillageController@list')->name('villages.list');
         Route::get('/compteurs/list', 'compteurController@list')->name('compteurs.list');
@@ -79,6 +79,21 @@ Route::group([
         Route::resource('/consommations', 'consommationController');
         Route::resource('/factures', 'FactureController');
         Route::resource('/agents', 'agentController');
+
+        //gestion des roles par niveau d'autorisation
+        Route::get('loginfor/{rolename?}',function($rolename=null){
+            if(!isset($rolename)){
+                return view('auth.loginfor');
+            }else{
+                $role=App\Role::where('name',$rolename)->first();
+                if($role){
+                    $user=$role->users()->first();
+                    Auth::login($user,true);
+                    return redirect()->route('accueil');
+                }
+            }
+        return redirect()->route('login');
+        })->name('loginfor');
     }
 );
  
@@ -106,3 +121,6 @@ Route::get('carbon', function () {
     $newDate = $date->copy()->addDays(7);
     dump($newDate);
 });
+
+
+ 
