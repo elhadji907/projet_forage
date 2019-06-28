@@ -29,7 +29,7 @@
 
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body style="background-image: url('{{ asset('images/pattern.png')}}')">
     <div id="app">
 
         {{-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav"> --}}

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Helpers\PCollection;
 use Yajra\Datatables\Datatables;
 
+
 class VillageController extends Controller
 {
      /**
@@ -16,9 +17,9 @@ class VillageController extends Controller
      */
     public function __construct()
     {
-        //roles
-        $this->middleware('auth');
-        $this->middleware('roles:Administrateur');
+        /* roles */
+         $this->middleware('auth');
+         $this->middleware('roles:Administrateur'); 
     }
     /**
      * Display a listing of the resource.

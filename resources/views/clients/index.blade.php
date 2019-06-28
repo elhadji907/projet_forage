@@ -117,6 +117,17 @@
                     //     "targets": 1
                     // }
                 ],
+
+                      dom: 'lBfrtip',
+                      buttons: [
+                          'copy', 'csv', 'excel', 'pdf', 'print',
+                      ],
+
+                      "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "Tout"] ],
+                      
+                 
+
+
                 language: {
                   "sProcessing":     "Traitement en cours...",
                   "sSearch":         "Rechercher&nbsp;:",

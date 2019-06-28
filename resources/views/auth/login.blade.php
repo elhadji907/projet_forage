@@ -15,7 +15,12 @@
             </div>
             @endif
             <div class="card card-header">
-                <div class="card-header text-center bg-info text-white rounded-pill">{{ __('CONNEXION') }}</div>
+                <div class="card-header text-center bg-info text-white rounded-pill">
+                    {{ __('CONNEXION') }}
+                   {{--   <a class="float-right text-white" href="{{ route('register') }}">
+                        {{ __('Pas encore de compte ?') }}
+                    </a>  --}}
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -54,7 +59,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Se souvenir de moi') }}
+                                        {{ __('Se rappeler de moi') }}
                                     </label>
                                 </div>
                             </div>
@@ -70,6 +75,10 @@
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Mot de passe oublié ?') }}
                                     </a>
+                                    {{--   <br /> <br />    
+                                    <a href="{{ route('register') }}">
+                                        {{ __('Pas encore de compte ?') }}
+                                    </a>  --}}
                                 @endif
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 @include('header')
 
-<body id="page-top">
+<body id="page-top" style="background-image: url('{{ asset('images/pattern.png')}}')">
 
 @include('navbar')
 

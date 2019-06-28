@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  {{-- <title>SenForafe</title> --}}
+  {{-- <title>SenForage</title> --}}
   <title>
     {{ config('app.name', 'SenForage') }}
   </title>
@@ -21,7 +21,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" style="background-image: url('{{ asset('images/pattern.png')}}')">
 
 @include('layout.navbar')
   <div id="wrapper">
@@ -35,12 +35,17 @@
      {{--   <!-- Breadcrumbs-->  --}}
      
 @section('content')
-<ol class="breadcrumb">
+
+<ol class="breadcrumb" style="background-image: url('{{ asset('images/pattern.png')}}')">
+  <marquee>
   <li class="breadcrumb-item">
-    <a href="{{ url('/accueil') }}">Tableau de bord</a>
+   {{--   <a class="text-white" href="{{ url('/accueil') }}">Bienvenue à SenForage</a>  --}}
   </li>
-  <li class="breadcrumb-item active">Accueil</li>
+</marquee>
+ {{--   <li class="breadcrumb-item active">Accueil</li>  --}}
+
 </ol>
+
 @include('layout.main')
    {{--   <!-- /.content-wrapper -->  --}}
 @show

@@ -12,6 +12,6 @@ class ConsommationsTableSeeder extends Seeder
     public function run()
     {
         //ici on cré des factures qui ne sont liées à aucune consommation
-        factory(App\Consommation::class,100)->create(["factures_id"=>null]);
+        factory(App\Consommation::class,10000)->create(["factures_id"=>null]);
     }
 }
