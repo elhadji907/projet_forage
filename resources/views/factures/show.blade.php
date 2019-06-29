@@ -134,9 +134,9 @@
                             
                             <td>
                                 Sen Forage<br>
-                                {{ $facture->user->firstname }}<br>
-                                {{ $facture->user->name }}<br>
-                                {{ $facture->user->email }}
+                                {{ $facture->user->firstname }}&nbsp;{{ $facture->user->name }}<br>
+                                {{ $facture->user->email }}<br>
+                                {{ $facture->consommations->first()->compteur->numero_serie }}
                             </td>
                         </tr>
                     </table>
