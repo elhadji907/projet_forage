@@ -23,6 +23,7 @@
                               <th>NOM</th>
                               <th>EMAIL</th>
                               <th>TELEPHONE</th>
+                              <th>TYPE PAIEMENT</th>
                               <th>ACTION</th>
                             </tr>
                           </thead>
@@ -34,13 +35,14 @@
                                 <th>NOM</th>
                                 <th>EMAIL</th>
                                 <th>TELEPHONE</th>
+                                <th>TYPE PAIEMENT</th>
                                 <th>ACTION</th>
                               </tr>
                             </tfoot>
                           <tbody>
                            
                           </tbody>
-                        </table>                        
+                      </table>                        
                 </div>
               </div>
             </div>
@@ -63,6 +65,7 @@
                     { data: 'user.name', name: 'user.name' },
                     { data: 'user.email', name: 'user.email' },
                     { data: 'user.telephone', name: 'user.telephone' },
+                    { data: 'reglement.type.name', name: 'reglement.type.name' },
                     { data: null ,orderable: false, searchable: false}
 
                 ],
@@ -70,12 +73,12 @@
                         {
                         "data": null,
                         "render": function (data, type, row) {
-                        url_e =  "{!! route('factures.edit',':id')!!}".replace(':id', data.id);
-                        url_d =  "{!! route('factures.destroy',':id')!!}".replace(':id', data.id);
-                        return '<a href='+url_e+'  class=" btn btn-primary edit " title="Modifier"><i class="far fa-edit">&nbsp;Edit</i></a>&nbsp;'+
-                        '<a class="btn btn-danger delete" title="Supprimer" href='+url_d+'><i class="fas fa-times">&nbsp;Delete</i></a>';
+                        url_e =  "{!! route('factures.show',':id')!!}".replace(':id', data.id);
+                        url_d =  "{!! route('reglements.create',':id')!!}".replace(':id', data.id);
+                        return '<a href='+url_e+'  class=" btn btn-primary edit " title="Afficher facture"><i class="far fa-eye"></i></a>&nbsp;'+
+                        '<a class="btn btn-success delete" title="Effectuer reglement" href='+url_d+'><i class="far fa-share-square"></i></a>';
                         },
-                        "targets": 6
+                        "targets": 7
                         },
                     // {
                     //     "data": null,

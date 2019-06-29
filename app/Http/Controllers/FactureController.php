@@ -47,7 +47,8 @@ class FactureController extends Controller
      */
     public function show(Facture $facture)
     {
-        //
+        return view('factures.show', compact('facture'));
+        //return $facture;
     }
 
     /**
@@ -86,7 +87,9 @@ class FactureController extends Controller
 
     public function list(Request $request)
     {
-        $factures=Facture::with('consommations.compteur.abonnement.client.user')->get();
+         $factures=Facture::with('consommations.compteur.abonnement.client.user','reglement.type')->get(); 
+       /*  $factures=Facture::get();
+        return $factures; */
         return Datatables::of($factures)->make(true);
     }
 }

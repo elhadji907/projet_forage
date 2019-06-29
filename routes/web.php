@@ -70,6 +70,7 @@ Route::group([
         Route::get('/compteurs/listfree', 'compteurController@listfree')->name('compteurs.listfree');
         Route::get('/factures/list', 'FactureController@list')->name('factures.list');
         Route::get('/agents/list', 'agentController@list')->name('agents.list');
+        Route::get('/reglements/create/{facture}', 'ReglementController@create')->name('reglements.create');
 
         Route::resource('/villages', 'VillageController');
         Route::resource('/clients', 'clientController');
@@ -79,6 +80,7 @@ Route::group([
         Route::resource('/consommations', 'consommationController');
         Route::resource('/factures', 'FactureController');
         Route::resource('/agents', 'agentController');
+        Route::resource('/reglements', 'ReglementController')->except('create');
 
     
     }
