@@ -14,22 +14,34 @@
         <a class="dropdown-header d-inline-block text-truncate" style="max-width: 200px;" href="#">
           {{ Auth::user()->email }}
         </a>
-        @roles('Gestionnaire|Administrateur')
-        <a class="dropdown-item" href="{{ route('villages.index') }}"><p>Villages</p></a>
-        <a class="dropdown-item" href="{{ route('clients.index') }}"><p>Clients</p></a>
-        <a class="dropdown-item" href="{{ route('compteurs.index') }}"><p>Compteurs</p></a>
+        
+        @roles('Administrateur')
         <a class="dropdown-item" href="{{ route('administrateurs.index') }}"><p>Administrateurs</p></a>
         @endroles
-        @roles('Administrateur')
-        <a class="dropdown-item" href="{{ route('agents.index') }}"><p>Agents</p></a>
+
+        @roles('Gestionnaire|Administrateur')
+        <a class="dropdown-item" href="#"><p>Gestionnaires</p></a>
         <a class="dropdown-item" href="{{ route('abonnements.index') }}"><p>Abonnements</p></a>
-        <a class="dropdown-item" href="{{ route('consommations.index') }}"><p>Consommation</p></a>
-        <a class="dropdown-item" href="{{ route('factures.index') }}"><p>Factures</p></a>
-        <a class="dropdown-item" href="{{ route('factures.index') }}"><p>Réglement</p></a>
-        <a class="dropdown-item" href="#"><p>Comptables</p></a>
+        <a class="dropdown-item" href="{{ route('compteurs.index') }}"><p>Compteurs</p></a>
+        <a class="dropdown-item" href="{{ route('villages.index') }}"><p>Villages</p></a>
         @endroles
 
-        <a class="dropdown-item" href="#"><p>Gestionnaires</p></a>
+        @roles('Administrateur|Comptable')
+        <a class="dropdown-item" href="#"><p>Comptables</p></a>
+        <a class="dropdown-item" href="{{ route('consommations.index') }}"><p>Consommations</p></a>
+        <a class="dropdown-item" href="{{ route('factures.index') }}"><p>Factures</p></a>
+        <a class="dropdown-item" href="{{ route('factures.index') }}"><p>Réglement</p></a>
+        @endroles
+
+        @roles('Administrateur|Agent')
+        <a class="dropdown-item" href="{{ route('agents.index') }}"><p>Agents</p></a>
+        <a class="dropdown-item" href="{{ route('factures.index') }}"><p>Factures</p></a>
+        
+        @endroles
+
+        @roles('Administrateur|Client')
+        <a class="dropdown-item" href="{{ route('clients.index') }}"><p>Clients</p></a>
+        @endroles
 
       </div>
     </li>
