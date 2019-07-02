@@ -83,23 +83,23 @@ Route::group([
         Route::resource('/reglements', 'ReglementController')->except('create');
 
     
-    }
-);
 
-    //gestion des roles par niveau d'autorisation
-    Route::get('loginfor/{rolename?}',function($rolename=null){
-        if(!isset($rolename)){
-            return view('auth.loginfor');
-        }else{
-            $role=App\Role::where('name',$rolename)->first();
-            if($role){
-                $user=$role->users()->first();
-                Auth::login($user,true);
-                return redirect()->route('accueil');
+        //gestion des roles par niveau d'autorisation
+        Route::get('loginfor/{rolename?}',function($rolename=null){
+            if(!isset($rolename)){
+                return view('auth.loginfor');
+            }else{
+                $role=App\Role::where('name',$rolename)->first();
+                if($role){
+                    $user=$role->users()->first();
+                    Auth::login($user,true);
+                    return redirect()->route('accueil');
+                }
             }
+            return redirect()->route('login');
+            })->name('loginfor');
         }
-    return redirect()->route('login');
-    })->name('loginfor');
+);
  
 /* Route::get('/home', 'HomeController@index')->name('home'); */
 
