@@ -36,7 +36,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  *
  * @package App
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
 	use Notifiable;
 	use \Illuminate\Database\Eloquent\SoftDeletes;

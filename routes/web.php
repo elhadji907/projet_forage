@@ -44,7 +44,7 @@ Route::get('/login', function () {
 taper cette commande pour afficher le contenu ci dessous
 php artisan make:auth
 */
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 /* Auth::routes(['verify' => true]); */
 /* 
