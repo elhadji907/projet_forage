@@ -27,7 +27,10 @@
   <div id="wrapper">
 
    {{--   <!-- Sidebar -->  --}}
- @include('layout.sidebar')
+@roles('Administrateur|Gestionnaire|Comptable|Agent')
+@include('layout.sidebar')
+@endroles
+
  <div id="content-wrapper">
 
     <div class="container-fluid">
@@ -37,13 +40,12 @@
 @section('content')
 
 <ol class="breadcrumb" style="background-image: url('{{ asset('images/pattern.png')}}')">
-  <marquee>
+ {{--  <marquee> --}}
   <li class="breadcrumb-item">
-   {{--   <a class="text-white" href="{{ url('/accueil') }}">Bienvenue à SenForage</a>  --}}
+   <a href="{{ url('/accueil') }}">Tableau de bord</a>
   </li>
-</marquee>
- {{--   <li class="breadcrumb-item active">Accueil</li>  --}}
-
+{{-- </marquee> --}}
+   <li class="breadcrumb-item active"></li>
 </ol>
 
 @include('layout.main')
