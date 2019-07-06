@@ -63,7 +63,15 @@ class Facture extends Eloquent
 
 	public function reglement()
 	{
-		return $this->hasOne(\App\Reglement::class, 'factures_id');
+		// return $this->hasOne(\App\Reglement::class, 'factures_id');
+		return $this->hasOne(\App\Reglement::class, 'factures_id')->withDefault(
+            [
+                "id"=>-1,
+                "uuid"=>\Illuminate\Support\Str::uuid(),
+                "montant"=>0,
+                "type"=> (object)["id"=>-1,"name"=>"Aucun Type","uuid"=>\Illuminate\Support\Str::uuid()],
+            ]
+        );
 	}
 
 	//ajouter
