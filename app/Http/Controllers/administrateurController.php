@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Administrateur;
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -41,29 +42,28 @@ class administrateurController extends Controller
     {
         $this->validate(
             $request, [
-                'matricule'     => 'required|string|max:50',
-                'prenom'        => 'required|string|max:50',
-                'nom'           => 'required|string|max:50',
-                'telephone'     => 'required|string|max:50',
-                'email'         => 'required|email|max:255|unique:users,email',
-                'password'  => 'required|confirmed|string|min:8|max:50',
-                'password_confirmation'=>'required',
+                'matricule'     =>  'required|string|max:50',
+                'prenom'        =>  'required|string|max:50',
+                'nom'           =>  'required|string|max:50',
+                'telephone'     =>  'required|string|max:50',
+                'email'         =>  'required|email|max:255|unique:users,email',
+                'password'      =>  'required|confirmed|string|min:8|max:50',
             ],
             [
-                'password.min'=>'Pour des raisons de sécurité, votre mot de passe doit faire au moins :min caractères.'
+                'password.min'  =>  'Pour des raisons de sécurité, votre mot de passe doit faire au moins :min caractères.'
             ],
             [
-                'password.max'=>'Pour des raisons de sécurité, votre mot de passe ne doit pas dépasser :max caractères.'
+                'password.max'  =>  'Pour des raisons de sécurité, votre mot de passe ne doit pas dépasser :max caractères.'
             ]
         );
         //return view('administrateurs.index');
        $roles_id = Role::where('name','Administrateur')->first()->id;
         $utilisateur = new User([            
-            'name'           =>      $request->input('nom'),
             'firstname'      =>      $request->input('prenom'),
+            'name'           =>      $request->input('nom'),
             'email'          =>      $request->input('email'),
             'telephone'      =>      $request->input('telephone'),
-            'password'       =>      $request->input('mot_de_passe'),
+            'password'       =>      Hash::make($request->input('password')),
             'roles_id'       =>      $roles_id
 
         ]);
@@ -101,9 +101,10 @@ class administrateurController extends Controller
         
         //$utilisateur = User::find($id);
         $administrateur = Administrateur::find($id);
-        $utilisateur=$administrateur->user;
+        $utilisateur=$administrateur->user;        
+        $roles = Role::get();
         //return $utilisateur;
-        return view('administrateurs.update', compact('administrateur','utilisateur','id'));
+        return view('administrateurs.update', compact('administrateur','utilisateur','id','roles'));
     }
 
     /**
@@ -119,22 +120,23 @@ class administrateurController extends Controller
             $request, 
             [
                 'matricule'     => 'required|string|max:50',
-                'prenom'        => 'required|string|max:50',
+                'prenom'        => 'required|string|max:100',
                 'nom'           => 'required|string|max:50',
                 'telephone'     => 'required|string|max:50',
-                'email'         => "required|email|max:255|unique:users,email,".$id,
+                'choixrole'     => 'required|string',
             ]);
 
         $administrateur = Administrateur::find($id);
         $utilisateur=$administrateur->user;
 
-        $roles_id = Role::where('name','Administrateur')->first()->id;
+       /*  $roles_id = Role::where('name','Administrateur')->first()->id; */
 
-        $utilisateur->name           =      $request->input('nom');
+
         $utilisateur->firstname      =      $request->input('prenom');
-        $utilisateur->email          =      $request->input('email');
+        $utilisateur->name           =      $request->input('nom');
         $utilisateur->telephone      =      $request->input('telephone');
-        $utilisateur->roles_id       =      $roles_id;
+       /*  $utilisateur->roles_id       =      $roles_id; */
+       $utilisateur->roles_id        =      $request->input('choixrole');
 
         $utilisateur->save();
 

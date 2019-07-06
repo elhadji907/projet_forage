@@ -91,8 +91,8 @@
             columns: [
                     { data: 'id', name: 'id' },
                     { data: 'matricule', name: 'matricule' },
-                    { data: 'user.name', name: 'user.name' },
                     { data: 'user.firstname', name: 'user.firstname' },
+                    { data: 'user.name', name: 'user.name' },
                     { data: 'user.email', name: 'user.email' },
                     { data: 'user.telephone', name: 'user.telephone' },
                     { data: null ,orderable: false, searchable: false}

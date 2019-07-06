@@ -19,7 +19,7 @@
                                                     
                             <div class="form-group">
                                 <label for="input-matricule"><b>Matricule:</b></label>
-                                <input type="text" name="matricule" class="form-control" id="input-matricule" placeholder="Entrer votre matricule..." value="{{ old('matricule') }}">
+                                <input type="text" name="matricule" class="form-control" id="input-matricule" placeholder="Matricule" value="{{ old('matricule') }}">
                                 <small id="emailHelp" class="form-text text-muted">
                                         @if ($errors->has('matricule'))
                                         @foreach ($errors->get('matricule') as $message)
@@ -30,7 +30,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="input-prenom"><b>Prenom:</b></label>
-                                <input type="text" name="prenom" class="form-control" id="input-prenom" placeholder="entrer le prénom..." value="{{ old('prenom') }}">
+                                <input type="text" name="prenom" class="form-control" id="input-prenom" placeholder="Prenom" value="{{ old('prenom') }}">
                                 <small id="emailHelp" class="form-text text-muted">
                                         @if ($errors->has('prenom'))
                                         @foreach ($errors->get('prenom') as $message)
@@ -42,7 +42,7 @@
                             
                             <div class="form-group">
                                 <label for="input-nom"><b>Nom:</b></label>
-                                <input type="text" name="nom" class="form-control" id="input-nom" placeholder="Entrer votre nom..." value="{{ old('nom') }}">
+                                <input type="text" name="nom" class="form-control" id="input-nom" placeholder="Nom" value="{{ old('nom') }}">
                                 <small id="emailHelp" class="form-text text-muted">
                                         @if ($errors->has('nom'))
                                         @foreach ($errors->get('nom') as $message)
@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><b>Adresse email:</b></label>
-                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer votre adresse email..." value=" {{old('email')}}">
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail" value=" {{old('email')}}">
                                 <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais votre email avec qui que ce soit.</small>
                                 <small id="emailHelp" class="form-text text-muted">
                                     @if ($errors->has('email'))
@@ -65,7 +65,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><b>Téléphone:</b></label>
-                                <input type="text" name="telephone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer votre telephone ex: 77 699 41 73..." value="{{old('telephone')}}">
+                                <input type="text" name="telephone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Telephone" value="{{old('telephone')}}">
                                 <small id="emailHelp" class="form-text text-muted">
                                     @if ($errors->has('telephone'))
                                     @foreach ($errors->get('telephone') as $message)
@@ -91,7 +91,7 @@
                             </div> --}}
                             <div class="form-group">
                                 <label for="exampleInputPassword1"><b>Mot de passe:</b></label>
-                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Entrer votre mot de passe...">
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
                                 @if ($errors->has('password'))
                                 @foreach ($errors->get('password') as $message)
                                 <p class="text-danger">{{ $message }}</p>
@@ -100,7 +100,7 @@
                             </div> 
                             <div class="form-group">
                                 <label for="exampleInputPassword1"><b>Mot de passe:</b>(confirmation)</label>
-                                <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1" placeholder="Répéter votre mot de passe...">
+                                <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1" placeholder="Repeter mot de passe">
                                 @if ($errors->has('password_confirmation'))
                                 @foreach ($errors->get('password_confirmation') as $message)
                                 <p class="text-danger">{{ $message }}</p>
