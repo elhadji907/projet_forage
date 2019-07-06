@@ -27,9 +27,7 @@
   <div id="wrapper">
 
    {{--   <!-- Sidebar -->  --}}
-@roles('Administrateur|Gestionnaire|Comptable|Agent')
 @include('layout.sidebar')
-@endroles
 
  <div id="content-wrapper">
 
