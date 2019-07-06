@@ -27,8 +27,8 @@
                             <tr>
                               <th>ID</th>
                               <th>Matricule</th>
-                              <th>Nom</th>
                               <th>Prenom</th>
+                              <th>Nom</th>
                               <th>Email</th>
                               <th>Téléphone</th>
                               <th>Action</th>
@@ -38,8 +38,8 @@
                               <tr>
                                 <th>ID</th>
                                 <th>Matricule</th>
-                                <th>Nom</th>
                                 <th>Prenom</th>
+                                <th>Nom</th>
                                 <th>Email</th>
                                 <th>Téléphone</th>
                                 <th>Action</th>
