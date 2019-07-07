@@ -164,7 +164,7 @@ class administrateurController extends Controller
 
     public function list(Request $request)
     {
-        $administrateurs=Administrateur::with('user')->get();
+        $administrateurs=Administrateur::with('user')->orderBy('created_at', 'desc')->get();
         return Datatables::of($administrateurs)->make(true);
     }
  

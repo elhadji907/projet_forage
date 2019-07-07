@@ -25,7 +25,7 @@
                         <table class="table table-bordered table-striped" width="100%" cellspacing="0" id="table-administrateurs">
                           <thead class="table-dark">
                             <tr>
-                              <th>ID</th>
+                             {{--  <th>ID</th> --}}
                               <th>Matricule</th>
                               <th>Prenom</th>
                               <th>Nom</th>
@@ -36,7 +36,7 @@
                           </thead>
                           <tfoot class="table-dark">
                               <tr>
-                                <th>ID</th>
+                              {{--   <th>ID</th> --}}
                                 <th>Matricule</th>
                                 <th>Prenom</th>
                                 <th>Nom</th>
@@ -89,7 +89,7 @@
             "serverSide": true,
             "ajax": "{{route('administrateurs.list')}}",
             columns: [
-                    { data: 'id', name: 'id' },
+                   /* { data: 'id', name: 'id' }, */
                     { data: 'matricule', name: 'matricule' },
                     { data: 'user.firstname', name: 'user.firstname' },
                     { data: 'user.name', name: 'user.name' },
@@ -107,7 +107,7 @@
                         return '<a href='+url_e+'  class=" btn btn-primary edit " title="Modifier"><i class="far fa-edit">&nbsp;Edit</i></a>&nbsp;'+
                         '<div class="btn btn-danger delete btn_delete_administrateur" title="Supprimer" data-href='+url_d+'><i class="fas fa-times">&nbsp;Delete</i></div>';
                         },
-                        "targets": 6
+                        "targets": 5
                         },
                 ],
                 language: {
@@ -139,7 +139,7 @@
                           } 
                   }
                 },
-              
+                order:[[0,'desc'], [0, 'asc']]              
           });
 
           
