@@ -14,15 +14,15 @@
               <div class="card"> 
                   <div class="card-header">
                       <i class="fas fa-table"></i>
-                      Liste des utilisateurs
+                      Liste des gestionnaires
                   </div>              
                 <div class="card-body">
                       <div class="table-responsive">
                           <div align="right">
-                            <a href="{{route('administrateurs.create')}}"><div class="btn btn-success">Nouveau Utilisateur&nbsp;<i class="fas fa-user-plus"></i></div></a>
+                            <a href="{{route('gestionnaires.create')}}"><div class="btn btn-success">Nouveau Gestionnaire&nbsp;<i class="fas fa-user-plus"></i></div></a>
                           </div>
                           <br />
-                        <table class="table table-bordered table-striped" width="100%" cellspacing="0" id="table-administrateurs">
+                        <table class="table table-bordered table-striped" width="100%" cellspacing="0" id="table-gestionnaires">
                           <thead class="table-dark">
                             <tr>
                               <th>ID</th>
@@ -56,8 +56,8 @@
         </div>
       </div>
 
-      <div class="modal fade" id="modal_delete_administrateur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form method="POST" action="" id="form-delete-administrateur">
+      <div class="modal fade" id="modal_delete_gestionnaire" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form method="POST" action="" id="form-delete-gestionnaire">
           @csrf
           @method('DELETE')
           <div class="modal-dialog" role="document">
@@ -84,12 +84,12 @@
       @push('scripts')
       <script type="text/javascript">
       $(document).ready(function () {
-          $('#table-administrateurs').DataTable( { 
+          $('#table-gestionnaires').DataTable( { 
             "processing": true,
             "serverSide": true,
-            "ajax": "{{route('administrateurs.list')}}",
+            "ajax": "{{route('gestionnaires.list')}}",
             columns: [
-                    { data: 'id', name: 'id' },
+                    { data: 'id', name: 'id' }, 
                     { data: 'matricule', name: 'matricule' },
                     { data: 'user.firstname', name: 'user.firstname' },
                     { data: 'user.name', name: 'user.name' },
@@ -102,10 +102,10 @@
                         {
                         "data": null,
                         "render": function (data, type, row) {
-                        url_e =  "{!! route('administrateurs.edit',':id')!!}".replace(':id', data.id);
-                        url_d =  "{!! route('administrateurs.destroy',':id')!!}".replace(':id', data.id);
+                        url_e =  "{!! route('gestionnaires.edit',':id')!!}".replace(':id', data.id);
+                        url_d =  "{!! route('gestionnaires.destroy',':id')!!}".replace(':id', data.id);
                         return '<a href='+url_e+'  class=" btn btn-primary edit " title="Modifier"><i class="far fa-edit">&nbsp;Edit</i></a>&nbsp;'+
-                        '<div class="btn btn-danger delete btn_delete_administrateur" title="Supprimer" data-href='+url_d+'><i class="fas fa-times">&nbsp;Delete</i></div>';
+                        '<div class="btn btn-danger delete btn_delete_gestionnaire" title="Supprimer" data-href='+url_d+'><i class="fas fa-times">&nbsp;Delete</i></div>';
                         },
                         "targets": 6
                         },
@@ -143,11 +143,11 @@
           });
 
           
-        $('#table-administrateurs').off('click', '.btn_delete_administrateur').on('click', '.btn_delete_administrateur',
+        $('#table-gestionnaires').off('click', '.btn_delete_gestionnaire').on('click', '.btn_delete_gestionnaire',
         function() { 
           var href=$(this).data('href');
-          $('#form-delete-administrateur').attr('action', href);
-          $('#modal_delete_administrateur').modal();
+          $('#form-delete-gestionnaire').attr('action', href);
+          $('#modal_delete_gestionnaire').modal();
         });
       });
       

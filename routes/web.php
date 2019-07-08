@@ -61,6 +61,7 @@ Route::group([
         Route::get('/accueil', 'AccueilController@accueil')->name('accueil');
         Route::get('/clients/list', 'clientController@list')->name('clients.list');
         Route::get('/villages/list', 'VillageController@list')->name('villages.list');
+        Route::get('/gestionnaires/list', 'GestionnaireController@list')->name('gestionnaires.list');
         Route::get('/compteurs/list', 'compteurController@list')->name('compteurs.list');
         Route::get('/administrateurs/list', 'administrateurController@list')->name('administrateurs.list');
         Route::get('/abonnements/selectcompteur', 'abonnementController@selectcompteur')->name('abonnements.selectcompteur');
@@ -74,6 +75,7 @@ Route::group([
 
         Route::resource('/villages', 'VillageController');
         Route::resource('/clients', 'clientController');
+        Route::resource('/gestionnaires', 'GestionnaireController');
         Route::resource('/compteurs', 'compteurController');
         Route::resource('/administrateurs', 'administrateurController');
         Route::resource('/abonnements', 'abonnementController');

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Administrateur;
-use App\User;
+use App\Gestionnaire;
 use App\Role;
+use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
-class administrateurController extends Controller
+class GestionnaireController extends Controller
 {
       /**
      * Create a new controller instance.
@@ -20,7 +20,7 @@ class administrateurController extends Controller
     {
         /* roles */
          $this->middleware('auth');
-         $this->middleware('roles:Administrateur'); 
+         $this->middleware('roles:Gestionnaire|Administrateur'); 
     }
     /**
      * Display a listing of the resource.
@@ -29,7 +29,7 @@ class administrateurController extends Controller
      */
     public function index()
     {
-        return view('administrateurs.index');
+        return view('gestionnaires.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class administrateurController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('administrateurs.create',compact('roles'));
+        return view('gestionnaires.create',compact('roles'));
     }
 
     /**
@@ -67,8 +67,8 @@ class administrateurController extends Controller
                 'password.max'  =>  'Pour des raisons de sécurité, votre mot de passe ne doit pas dépasser :max caractères.'
             ]
         );
-        //return view('administrateurs.index');
-       $roles_id = Role::where('name','Administrateur')->first()->id;
+        //return view('gestionnaires.index');
+       $roles_id = Role::where('name','Gestionnaire')->first()->id;
         $utilisateur = new User([            
             'firstname'      =>      $request->input('prenom'),
             'name'           =>      $request->input('nom'),
@@ -81,22 +81,22 @@ class administrateurController extends Controller
         
         $utilisateur->save();
         
-        $administrateur = new Administrateur([
+        $gestionnaire = new Gestionnaire([
             'matricule'     =>     $request->input('matricule'),
             'users_id'      =>     $utilisateur->id
         ]);
 
-        $administrateur->save();
-        return redirect()->route('administrateurs.index')->with('success','utilisateur ajoutée avec succès !');
+        $gestionnaire->save();
+        return redirect()->route('gestionnaires.index')->with('success','gestionnaire ajoutée avec succès !');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Administrateur  $administrateur
+     * @param  \App\Gestionnaire  $gestionnaire
      * @return \Illuminate\Http\Response
      */
-    public function show(Administrateur $administrateur)
+    public function show(Gestionnaire $gestionnaire)
     {
         //
     }
@@ -104,25 +104,24 @@ class administrateurController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Administrateur  $administrateur
+     * @param  \App\Gestionnaire  $gestionnaire
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        
-        //$utilisateur = User::find($id);
-        $administrateur = Administrateur::find($id);
-        $utilisateur=$administrateur->user;        
+        $gestionnaire = Gestionnaire::find($id);
+        $utilisateur=$gestionnaire->user;        
         $roles = Role::get();
+        $role_actuel = $utilisateur->roles_id;
         //return $utilisateur;
-        return view('administrateurs.update', compact('administrateur','utilisateur','id','roles'));
+        return view('gestionnaires.update', compact('gestionnaire','utilisateur','id','roles','role_actuel'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Administrateur  $administrateur
+     * @param  \App\Gestionnaire  $gestionnaire
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -137,10 +136,10 @@ class administrateurController extends Controller
                 'choixrole'     => 'required|string',
             ]);
 
-        $administrateur = Administrateur::find($id);
-        $utilisateur=$administrateur->user;
+        $gestionnaire = Gestionnaire::find($id);
+        $utilisateur=$gestionnaire->user;
 
-       /*  $roles_id = Role::where('name','Administrateur')->first()->id; */
+       /*  $roles_id = Role::where('name','gestionnaire')->first()->id; */
 
 
         $utilisateur->firstname      =      $request->input('prenom');
@@ -151,32 +150,30 @@ class administrateurController extends Controller
 
         $utilisateur->save();
 
-        $administrateur->matricule   =     $request->input('matricule');
-        $administrateur->users_id    =     $utilisateur->id;
+        $gestionnaire->matricule   =     $request->input('matricule');
+        $gestionnaire->users_id    =     $utilisateur->id;
 
-        $administrateur->save();
+        $gestionnaire->save();
         
-        return redirect()->route('administrateurs.index')->with('success','utilisateur modifié avec succès !');
+        return redirect()->route('gestionnaires.index')->with('success','gestionnaire modifié avec succès !');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Administrateur  $administrateur
+     * @param  \App\Gestionnaire  $gestionnaire
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Administrateur $administrateur)
+    public function destroy(Gestionnaire $gestionnaire)
     {
-        $administrateur->delete();
-        $message = $administrateur->user->firstname.' '.$administrateur->user->name.' a été supprimé(e)';
-        return redirect()->route('administrateurs.index')->with(compact('message'));
-        //return $administrateur;
+        $gestionnaire->delete();
+        $message = $gestionnaire->user->firstname.' '.$gestionnaire->user->name.' a été supprimé(e)';
+        return redirect()->route('gestionnaires.index')->with(compact('message'));
     }
 
     public function list(Request $request)
     {
-        $administrateurs=Administrateur::with('user')->orderBy('created_at', 'desc')->get();
-        return Datatables::of($administrateurs)->make(true);
+        $gestionnaires=Gestionnaire::with('user')->get();
+        return Datatables::of($gestionnaires)->make(true);
     }
- 
 }

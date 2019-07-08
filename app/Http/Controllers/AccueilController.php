@@ -14,6 +14,7 @@ class AccueilController extends Controller
     public function __construct()
     {
         $this->middleware(['auth', 'verified']);
+        $this->middleware('roles:Administrateur|Gestionnaire|Agent|Comptable|Client'); 
     }
 
     public function accueil(){

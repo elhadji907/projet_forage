@@ -20,7 +20,7 @@
         @endroles
 
         @roles('Gestionnaire|Administrateur')
-        <a class="dropdown-item" href="#"><p>Gestionnaires</p></a>
+        <a class="dropdown-item" href="{{ route('gestionnaires.index') }}"><p>Gestionnaires</p></a>
         <a class="dropdown-item" href="{{ route('abonnements.index') }}"><p>Abonnements</p></a>
         <a class="dropdown-item" href="{{ route('compteurs.index') }}"><p>Compteurs</p></a>
         <a class="dropdown-item" href="{{ route('villages.index') }}"><p>Villages</p></a>
@@ -33,13 +33,12 @@
         <a class="dropdown-item" href="{{ route('factures.index') }}"><p>Réglement</p></a>
         @endroles
 
-        @roles('Administrateur|Agent')
+        @roles('Administrateur|Agent|Comptable')
         <a class="dropdown-item" href="{{ route('agents.index') }}"><p>Agents</p></a>
-        <a class="dropdown-item" href="{{ route('factures.index') }}"><p>Factures</p></a>
-        
+        <a class="dropdown-item" href="{{ route('factures.index') }}"><p>Factures</p></a>        
         @endroles
 
-        @roles('Administrateur|Client')
+        @roles('Administrateur|Gestionnaire|Comptable|Agent|Client')
         <a class="dropdown-item" href="{{ route('clients.index') }}"><p>Clients</p></a>
         @endroles
 

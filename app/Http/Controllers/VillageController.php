@@ -19,7 +19,7 @@ class VillageController extends Controller
     {
         /* roles */
          $this->middleware('auth');
-         $this->middleware('roles:Administrateur'); 
+         $this->middleware('roles:Administrateur|Gestionnaire|Comptable|Agent'); 
     }
     /**
      * Display a listing of the resource.
