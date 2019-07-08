@@ -70,7 +70,7 @@
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                                     @endforeach
                                 </select>
-                                <small id="emailHelp" class="form-text text-muted"><strong class="">NB:</strong> Le rôle actuel : {{ $role_actuel }}</small>
+                                <small id="emailHelp" class="form-text text-muted"><strong>NB : </strong>le role actuel {{ $utilisateur->roles_id }}</small>
                                 <small id="emailHelp" class="form-text text-muted">
                                     @if ($errors->has('choixrole'))
                                     @foreach ($errors->get('choixrole') as $message)

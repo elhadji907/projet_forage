@@ -112,9 +112,9 @@ class GestionnaireController extends Controller
         $gestionnaire = Gestionnaire::find($id);
         $utilisateur=$gestionnaire->user;        
         $roles = Role::get();
-        $role_actuel = $utilisateur->roles_id;
+        $role_actuels    =   $utilisateur->roles_id;
         //return $utilisateur;
-        return view('gestionnaires.update', compact('gestionnaire','utilisateur','id','roles','role_actuel'));
+        return view('gestionnaires.update', compact('gestionnaire','utilisateur','id','roles'));
     }
 
     /**
