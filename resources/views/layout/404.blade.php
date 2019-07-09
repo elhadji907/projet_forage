@@ -134,7 +134,12 @@
           </li>
           <li class="breadcrumb-item active">404 Error</li>
         </ol>
-
+        @section('content')
+        @if (session('permission'))
+        <div class="alert alert-success">
+            {{ session('permission') }}
+        </div>
+        @endif
         <!-- Page Content -->
         <h1 class="display-1">404</h1>
         <p class="lead">Page not found. You can

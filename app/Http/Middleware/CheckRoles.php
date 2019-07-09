@@ -15,7 +15,14 @@ class CheckRoles
      */
     public function handle($request, Closure $next, $roles)
     {
-        
+        if ($request->user()->hasRole('Nologin')) {
+            //déconnecter l'utilisateur
+           /*  Auth::logout(); */
+            //rediriger vers la route login avec le message de session
+            return redirect()->route('home')->with(['permission' => "Ressource non autorisee, contacter l'Administrateur pour plus d'infos ..."]);
+            //oubien sur une page speciale par exemple pour prendre contact avec l'admin
+            }
+
         $rolesAny = explode("|", $roles);
 
         //cette requette nous permet de vérifier si l'utilisateur connecté n'a pas un des role passé en paramètre

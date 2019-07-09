@@ -86,8 +86,7 @@
   </nav>
 
   <div id="wrapper">
-
-    <!-- Sidebar -->
+     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="index.html">

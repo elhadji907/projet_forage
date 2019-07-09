@@ -11,6 +11,13 @@
     </div>
   </header>
 
+
+  @if (session('permission'))
+  <div class="alert alert-success">
+      {{ session('permission') }}
+  </div>
+  @endif
+  
   @include('section')
 
   @include('footer')

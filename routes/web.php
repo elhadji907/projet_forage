@@ -19,37 +19,12 @@ Route::get('/', function () {
     return view('bienvenue');
 });
 
-/* Route::get('/accueil', function () {
-    return view('layout.index');
-}); */
-
-
-
 
 Route::get('/table', function () {
     return view('layout.tables');
 });
-/* 
-Route::get('/register', function () {
-    return view('layout.register');
-});
 
-Route::get('/login', function () {
-    return view('layout.login');
-}); */
-
-
-
-/*
-taper cette commande pour afficher le contenu ci dessous
-php artisan make:auth
-*/
 Auth::routes(['verify' => true]);
-
-/* Auth::routes(['verify' => true]); */
-/* 
-Route::get('/clients.selectvillage', function() { return view('clients.selectvillage'); })->name('clients.selectvillage');
-Route::get( '/compteurs.selectclient', function() { return view('compteurs.selectclient'); })->name('compteurs.selectclient'); */
 
 
 Route::group([
@@ -59,6 +34,7 @@ Route::group([
         Route::get('/clients.selectvillage', function() { return view('clients.selectvillage'); })->name('clients.selectvillage');
         Route::get( '/compteurs.selectclient', function() { return view('compteurs.selectclient'); })->name('compteurs.selectclient');
         Route::get('/accueil', 'AccueilController@accueil')->name('accueil');
+        Route::get('/home', 'HomeController@index')->name('home');
         Route::get('/clients/list', 'clientController@list')->name('clients.list');
         Route::get('/villages/list', 'VillageController@list')->name('villages.list');
         Route::get('/gestionnaires/list', 'GestionnaireController@list')->name('gestionnaires.list');
@@ -101,10 +77,6 @@ Route::group([
         }
 );
  
-/* Route::get('/home', 'HomeController@index')->name('home'); */
-
-
-
 
 //route carbon
 
