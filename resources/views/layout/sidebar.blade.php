@@ -25,7 +25,7 @@
 
         
         @roles('Administrateur|Comptable')
-        <a class="dropdown-item" href="#"><p>Comptables</p></a>
+        <a class="dropdown-item" href="{{ route('comptables.index') }}"><p>Comptables</p></a>
         @endroles
 
         

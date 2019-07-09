@@ -38,6 +38,7 @@ Route::group([
         Route::get('/clients/list', 'clientController@list')->name('clients.list');
         Route::get('/villages/list', 'VillageController@list')->name('villages.list');
         Route::get('/gestionnaires/list', 'GestionnaireController@list')->name('gestionnaires.list');
+        Route::get('/comptables/list', 'ComptableController@list')->name('comptables.list');
         Route::get('/compteurs/list', 'compteurController@list')->name('compteurs.list');
         Route::get('/administrateurs/list', 'administrateurController@list')->name('administrateurs.list');
         Route::get('/abonnements/selectcompteur', 'abonnementController@selectcompteur')->name('abonnements.selectcompteur');
@@ -52,6 +53,7 @@ Route::group([
         Route::resource('/villages', 'VillageController');
         Route::resource('/clients', 'clientController');
         Route::resource('/gestionnaires', 'GestionnaireController');
+        Route::resource('/comptables', 'ComptableController');
         Route::resource('/compteurs', 'compteurController');
         Route::resource('/administrateurs', 'administrateurController');
         Route::resource('/abonnements', 'abonnementController');
