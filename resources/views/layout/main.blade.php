@@ -11,7 +11,7 @@
        {{--  <div class="mr-5">26 New Messages!</div> --}}
        <div class="mr-5">{{ \App\Client::get()->count() }} Clients</div>
       </div>
-      <a class="card-footer text-white clearfix small z-1" href="#">
+      <a class="card-footer text-white clearfix small z-1" href="{{ route('clients.index') }}">
         <span class="float-left">Voir les détails</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>
@@ -27,7 +27,7 @@
         </div>
         <div class="mr-5">{{ \App\Abonnement::get()->count() }} Abonnements</div>
       </div>
-      <a class="card-footer text-white clearfix small z-1" href="#">
+      <a class="card-footer text-white clearfix small z-1" href="{{ route('abonnements.index') }}">
         <span class="float-left">Voir les détails</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>
@@ -44,7 +44,7 @@
         <div class="mr-5">{{ \App\Compteur::doesntHave('abonnement')->get()->count() }} Compteurs disponibles<br />
         </div>
       </div>
-      <a class="card-footer text-white clearfix small z-1" href="#">
+      <a class="card-footer text-white clearfix small z-1" href="{{ route('compteurs.index') }}">
         <span class="float-left">Voir les détails</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>
@@ -60,7 +60,7 @@
         </div>
         <div class="mr-5">{{ \App\Facture::doesntHave('reglement')->get()->count() }} Factures non réglées</div>
       </div>
-      <a class="card-footer text-white clearfix small z-1" href="#">
+      <a class="card-footer text-white clearfix small z-1" href="{{ route('factures.index') }}">
         <span class="float-left">Voir les détails</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>

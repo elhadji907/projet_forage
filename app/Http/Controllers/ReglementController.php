@@ -15,7 +15,7 @@ class ReglementController extends Controller
      */
     public function index()
     {
-        //
+        return view('reglements.index');
     }
 
     /**
