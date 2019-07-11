@@ -20,5 +20,7 @@
   <!-- Custom styles for this template -->
   <link href="{{ asset('css/scrolling-nav.css') }}" rel="stylesheet">
 
+  <link href="{{ asset('css/myStyle-nav.css') }}" rel="stylesheet">
+
   
 </head>
