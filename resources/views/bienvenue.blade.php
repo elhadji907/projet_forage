@@ -16,8 +16,9 @@
   <header class="bg-primary text-white">
     <div class="container text-center">
       <h1>{{ ("Sen Forage") }}</h1>
-      <p class="lead">{{ ("Votre socièté de distribution d'eau potable") }}</p>
-    </div>
+      <p class="lead">{{ ("est une entreprise évoluant dans la production et la distribution d’eau pour les villageois du nord du Sénégal") }}</p>
+     </div>
+    <hr/>
   </header>
  
   @if (session('permission'))
