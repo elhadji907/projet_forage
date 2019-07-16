@@ -55,7 +55,7 @@
     </li>
     <li class="nav-item active">
       <a class="nav-link" href="{{ url('/table') }}">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Tables</span></a>
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <span>Messages</span></a>
     </li>
   </ul>

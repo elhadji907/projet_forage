@@ -45,7 +45,45 @@
           <div class="row">
             <div class="col-lg-8 mx-auto">
               <h2>CONTACTEZ-NOUS</h2>
-              <p class="lead"></p>
+              <p class="lead text-center">FORMULAIRE DE CONTACT</p>
+              <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <div class="row">
+                  <div class="col">
+                      <label for="name">Nom:</label>
+                      <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Votre nom">
+
+                      @if ($errors->has('name'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('name') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+                  <div class="col">
+                      <label for="email">Adreese e-mail:</label>
+                      <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Votre e-mail">
+
+                      @if ($errors->has('email'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('email') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+                   <div class="col-md-12">
+                    <label for="message">Message:</label>                    
+                    <textarea class="form-control{{ $errors->has('message') ? ' is-invalid' : '' }}" rows="5" name="message" value="{{ old('message') }}" placeholder="Votre message"></textarea>
+                    @if ($errors->has('message'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('message') }}</strong>
+                        </span>
+                    @endif
+                  </div>
+                </div>
+                <br/>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i>
+                  {{ __('Envoyer') }}
+              </button>
+              </form>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@
 
   <title>{{ config('app.name', 'SenForage') }}</title>
   <link rel="icon" href="{!! asset('vendor/icon.ico') !!}"/>
-
+  <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <meta name="description" content="">
   <meta name="author" content="">
   

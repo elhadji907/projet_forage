@@ -15,7 +15,7 @@
                 <div class="card-body">
                                                
                         <form method="POST" action="{{url('administrateurs')}}">
-                            {{ csrf_field() }}
+                           @csrf
                                                     
                             <div class="form-group">
                                 <label for="input-matricule"><b>Matricule:</b></label>
