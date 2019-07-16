@@ -4,7 +4,7 @@
 
 @include('navbar')
 
-<div class="jumbotron jumbotron-fluid change">
+<div class="jumbotron jumbotron-fluid">
   <div>
     <h1 class="display-4">{{ ("SenForage!") }}</h1>
     <p class="lead">{{ ("est une entreprise évoluant dans la production et la distribution d’eau pour les villageois du nord du Sénégal") }}</p>

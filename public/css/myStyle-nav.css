@@ -1,6 +1,7 @@
-.change {
+.jumbotron {
+    background-image: url('../images/forage.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    color:black;
+    color: aliceblue;
     text-align: center;
     }
