@@ -1,7 +1,7 @@
 .jumbotron {
-    background-image: url('../images/forage.jpg');
+    background-image: url('../images/foragedefond2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     color: aliceblue;
-    text-align: center;
+    height: 100vh;
     }

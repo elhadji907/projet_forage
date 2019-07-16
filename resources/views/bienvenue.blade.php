@@ -4,23 +4,18 @@
 
 @include('navbar')
 
-<div class="jumbotron jumbotron-fluid">
+{{--  <div class="jumbotron jumbotron-fluid">
   <div>
     <h1 class="display-4">{{ ("SenForage!") }}</h1>
     <p class="lead">{{ ("est une entreprise évoluant dans la production et la distribution d’eau pour les villageois du nord du Sénégal") }}</p>
     <hr class="my-4">
     <p>{{ ("L'eau est un liquide précieux.") }}.</p>
   </div> 
+</div>   --}}
+
+<div class="jumbotron" id="jumbotron">
 </div>
 
-  {{-- <header class="bg-primary text-white">
-    <div class="container text-center">
-      <h1>{{ ("Sen Forage") }}</h1>
-      <p class="lead">{{ ("est une entreprise évoluant dans la production et la distribution d’eau pour les villageois du nord du Sénégal") }}</p>
-     </div>
-    <hr/>
-  </header> --}}
- 
   @if (session('permission'))
   <div class="alert alert-success">
       {{ session('permission') }}
