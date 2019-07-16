@@ -4,14 +4,14 @@
 
 @include('navbar')
 
-{{-- <div class="jumbotron jumbotron-fluid change">
-  <div class="container" style="background-image: url('{{ asset('images/image_onfp.jpg')}}')">
-    <h1 class="display-4">Sen Forage!</h1>
-    <p class="lead">{{ ("Votre socièté de distribution d'eau potable.") }}</p>
+<div class="jumbotron jumbotron-fluid change">
+  <div>
+    <h1 class="display-4">{{ ("SenForage!") }}</h1>
+    <p class="lead">{{ ("est une entreprise évoluant dans la production et la distribution d’eau pour les villageois du nord du Sénégal") }}</p>
     <hr class="my-4">
     <p>{{ ("L'eau est un liquide précieux.") }}.</p>
   </div> 
-</div> --}}
+</div>
 
   <header class="bg-primary text-white">
     <div class="container text-center">
