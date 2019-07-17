@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body">
                                                
-                        <form method="POST" action="{{url('administrateurs')}}">
+                        <form method="POST" action="{{ url('administrateurs') }}">
                            @csrf
                                                     
                             <div class="form-group">

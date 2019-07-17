@@ -41,18 +41,23 @@
                             @endif
                         </small>
                     </div>
-
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Adresse Email</label>
-                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email du client" value=" {{ $utilisateur->email }}">
-                        <small id="emailHelp" class="form-text text-muted">
-                            @if ($errors->has('email'))
-                            @foreach ($errors->get('email') as $message)
-                            <p class="text-danger">{{ $message }}</p>
-                            @endforeach
+                        <label for="input-nom">Telephone</label>
+                        <input type="text" name="telephone" class="form-control" id="input-telephone" placeholder="telephone du client" value="{{ $utilisateur->telephone }}">
+                        <small id="input-telephone-help" class="form-text text-muted">
+                            @if ($errors->has('telephone'))
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->get('telephone') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             @endif
                         </small>
                     </div>
+                    
+                    {{--  
                     <div class="form-check">
                         <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" value="">
@@ -61,7 +66,7 @@
                                 <span class="check"></span>
                             </span>
                         </label>
-                    </div>                        
+                    </div>  --}}                        
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                 </form>
                     <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

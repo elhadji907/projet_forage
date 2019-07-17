@@ -1,4 +1,9 @@
 @include('flash::message')
+
+<div align="right">
+    <a href="{{route('clients.selectvillage')}}"><div class="btn btn-success">Nouvelle Demande&nbsp;<i class="fas fa-user-plus"></i></div></a> 
+</div>
+<br />
 {{-- <!-- Icon Cards--> --}}
 @roles('Administrateur|Gestionnaire|Comptable|Agent')
 <div class="row">
@@ -83,3 +88,117 @@
     {{--   @include('clients.index') --}}
 
 @endroles
+
+@push('scripts')
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#table-clients').DataTable( { 
+      "processing": true,
+      "serverSide": true,
+      "ajax": "{{route('clients.list')}}",
+      columns: [
+              { data: 'id', name: 'id' },
+              { data: 'user.name', name: 'user.name' },
+              { data: 'user.firstname', name: 'user.firstname' },
+              { data: 'user.email', name: 'user.email' },
+              { data: null ,orderable: false, searchable: false}
+
+          ],
+          "columnDefs": [
+                  {
+                  "data": null,
+                  "render": function (data, type, row) {
+                  url_e =  "{!! route('clients.edit',':id')!!}".replace(':id', data.id);
+                  url_d =  "{!! route('clients.destroy',':id')!!}".replace(':id', data.id);
+                  return '<a href='+url_e+'  class=" btn btn-primary edit " title="Modifier"><i class="far fa-edit">&nbsp;Edit</i></a>&nbsp;'+
+                  '<div class="btn btn-danger delete btn_delete_client" data-href='+url_d+'><i class="fas fa-times">&nbsp;Delete</i></div>';
+                  },
+                  "targets": 4
+                  },
+              // {
+              //     "data": null,
+              //     "render": function (data, type, row) {
+              //         url =  "{!! route('clients.edit',':id')!!}".replace(':id', data.id);
+              //         return check_status(data,url);
+              //     },
+              //     "targets": 1
+              // }
+          ],
+
+                dom: 'lBfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print',
+                ],
+
+                "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "Tout"] ],
+                
+           
+
+
+          language: {
+            "sProcessing":     "Traitement en cours...",
+            "sSearch":         "Rechercher&nbsp;:",
+            "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
+            "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+            "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment",
+            "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+            "sInfoPostFix":    "",
+            "sLoadingRecords": "Chargement en cours...",
+            "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+            "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
+            "oPaginate": {
+                "sFirst":      "Premier",
+                "sPrevious":   "Pr&eacute;c&eacute;dent",
+                "sNext":       "Suivant",
+                "sLast":       "Dernier"
+            },
+            "oAria": {
+                "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
+            },
+            "select": {
+                    "rows": {
+                        _: "%d lignes séléctionnées",
+                        0: "Aucune ligne séléctionnée",
+                        1: "1 ligne séléctionnée"
+                    } 
+            }
+          },
+        
+    });
+    
+
+
+    //supprimer une donnée
+    {{-- /*  $(document).on('click', '.delete', function(){
+      var id = $(this).attr('id');
+      if(confirm("Êtes-vous sûr de bien vouloir cette donnée !"))
+      {
+        $.ajax({
+          url:"{{route('clients.removedata')}}",
+          mehtod:"get",
+          data:{id:id},
+          success:function(data)
+          {
+              alert(data);
+              $('#table-clients').DataTable().ajax.reload();
+          }
+      })
+      }
+      else
+      {
+        return false;
+      }
+    });  */ --}}
+
+
+  $('#table-clients').off('click', '.btn_delete_client').on('click', '.btn_delete_client',
+  function() { 
+    var href=$(this).data('href');
+    $('#form-delete-client').attr('action', href);
+    $('#modal_delete_client').modal();
+  });
+  
+});
+</script> 
+@endpush

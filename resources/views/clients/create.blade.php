@@ -19,24 +19,27 @@
                     </div>
                     <div class="row pt-5"></div>
                     
-                    <form method="POST" action="{{ route('clients.store') }}">
+                    <form method="POST" action="{{ url('clients') }}">
                         @csrf
                         
                         <input type="hidden" name="village" value="{{$village->id}}" class="form-control" name="inputName" id="inputName" placeholder="">
-                        
                         <div class="form-group">
-                            <label for="input-nom">Nom</label>
+                            <label for="input-prenom"><b>Prénom</b></label>
+                            <input type="text" name="prenom" class="form-control{{ $errors->get('prenom') ? ' is-invalid' : '' }}" id="input-prenom" placeholder="prenom du client" value="{{ old('prenom') }}">
+                            <small id="input-prenom-help" class="form-text text-muted">
+                             
+                                @if ($errors->has('prenom'))
+                                @foreach ($errors->get('prenom') as $message)
+                                <p class="text-danger">{{ $message }}</p>
+                                @endforeach
+                                @endif
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-nom"><b>Nom</b></label>
                             <input type="text" name="nom" class="form-control{{ $errors->get('nom') ? ' is-invalid' : '' }}" id="input-nom" placeholder="nom du client" value="{{ old('nom') }}">
                             <small id="input-nom-help" class="form-text text-muted">
-                               {{--   @if ($errors->has('nom'))
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->get('nom') as $message)
-                                        <li>{{ $message }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                @endif  --}}
+                             
                                 @if ($errors->has('nom'))
                                 @foreach ($errors->get('nom') as $message)
                                 <p class="text-danger">{{ $message }}</p>
@@ -45,7 +48,7 @@
                             </small>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
+                            <label for="exampleInputEmail1"><b>Addresse E-mail</b></label>
                             <input type="email" name="email" class="form-control{{ $errors->get('email') ? ' is-invalid' : '' }}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email du client" value=" {{old('email')}}">
                             <small id="emailHelp" class="form-text text-muted">
                                 @if ($errors->has('email'))
@@ -55,8 +58,20 @@
                                 @endif
                             </small>
                         </div>
+                        
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
+                            <label for="exampleInputEmail1"><b>Téléphone:</b></label>
+                            <input type="text" name="telephone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Votre telephone" value="{{old('telephone')}}">
+                            <small id="emailHelp" class="form-text text-muted">
+                                @if ($errors->has('telephone'))
+                                @foreach ($errors->get('telephone') as $message)
+                                <p class="text-danger">{{ $message }}</p>
+                                @endforeach
+                                @endif
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1"><b>Mot de passe</b></label>
                             <input type="password" name="password" class="form-control{{ $errors->get('password') ? ' is-invalid' : '' }}" id="exampleInputPassword1" placeholder="mot de passe du client">
                             @if ($errors->has('password'))
                             @foreach ($errors->get('password') as $message)
@@ -64,7 +79,7 @@
                             @endforeach
                             @endif
                         </div>
-                        <div class="form-check">
+                       {{--   <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" value="">
                                 Option one is this
@@ -72,7 +87,7 @@
                                     <span class="check"></span>
                                 </span>
                             </label>
-                        </div>
+                        </div>  --}}
                         
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </form>

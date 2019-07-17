@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Role;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 use App\Client;
 use Illuminate\Http\Request;
 use App\Helpers\PCollection;
@@ -46,11 +48,39 @@ class clientController extends Controller
                 'nom' => 'required|string|max:50',
                 'prenom' => 'required|string|max:50',
                 'email' => 'required|email|max:255|unique:users,email',
-                'password' => 'required|string|max:50',
+                'telephone'     =>  'required|string|max:50',
+                'password' => 'required|string|min:8|max:50',
                 'village' => 'required|exists:villages,id',
+            ],
+            [
+                'password.min'  =>  'Pour des raisons de sécurité, votre mot de passe doit faire au moins :min caractères.'
+            ],
+            [
+                'password.max'  =>  'Pour des raisons de sécurité, votre mot de passe ne doit pas dépasser :max caractères.'
             ]
         );
-        return view('clients.index');
+
+        $roles_id = Role::where('name','Client')->first()->id;
+        $utilisateur = new User([            
+            'firstname'      =>      $request->input('prenom'),
+            'name'           =>      $request->input('nom'),
+            'email'          =>      $request->input('email'),
+            'telephone'      =>      $request->input('telephone'),
+            'password'       =>      Hash::make($request->input('password')),
+            'roles_id'       =>      $roles_id
+
+        ]);
+        $utilisateur->save();
+        $client = new Client([
+            'matricule'     =>     $roles_id,
+            'users_id'      =>     $utilisateur->id,
+            'village_id'    =>     $roles_id,
+            'gestionnaires_id'=>   $roles_id
+        ]);
+
+        $client->save();
+        return redirect()->route('clients.index')->with('message','client ajoutée avec succès !');
+       /*  return view('clients.index'); */
     }
 
     /**
@@ -92,8 +122,24 @@ class clientController extends Controller
             [
                 'prenom'        => 'required|string|max:50',
                 'nom'           => 'required|string|max:50',
-                'email'         => "required|email|max:255|unique:users,email,".$id,
+                'telephone'           => 'required|string|max:50',
             ]);
+
+        $client = Client::find($id);
+        $utilisateur=$client->user;
+        $utilisateur->firstname      =      $request->input('prenom');
+        $utilisateur->name           =      $request->input('nom');
+        $utilisateur->telephone      =      $request->input('telephone');
+        $utilisateur->save();
+        $client = new Client([
+            'matricule'     =>     $roles_id,
+            'users_id'      =>     $utilisateur->id,
+            'village_id'    =>     $roles_id,
+            'gestionnaires_id'=>   $roles_id
+        ]);
+
+        $client->save();
+        return redirect()->route('clients.index')->with('message','client ajoutée avec succès !');
     }
 
     /**

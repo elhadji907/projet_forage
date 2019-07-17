@@ -40,7 +40,7 @@
 <ol class="breadcrumb" style="background-image: url('{{ asset('images/pattern.png')}}')">
  {{--  <marquee> --}}
   <li class="breadcrumb-item">
-   <a href="{{ url('/accueil') }}">Tableau de bord</a>
+   <a href="{{ url('/accueil') }}">SenForage</a>
   </li>
 {{-- </marquee> --}}
    <li class="breadcrumb-item active"></li>

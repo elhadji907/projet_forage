@@ -70,7 +70,7 @@
                         "data": null,
                         "render": function (data, type, row) {
                         url_e =  "{!! route('clients.create','village=:id')!!}".replace(':id', data.id);
-                        return '<a href='+url_e+'  class=" btn btn-primary " ><i class="material-icons">edit</i></a>';
+                        return '<a href='+url_e+'  class=" btn btn-primary " ><i class="fas fa-check"></i>';
                         },
                         "targets": 4
                         },

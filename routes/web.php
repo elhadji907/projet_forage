@@ -15,13 +15,17 @@
     return view('welcome');
 }); */
 
-Route::get('/', function () {
-    return view('bienvenue');
+use Illuminate\Support\Facades\Date;
+Route::get('/', function () {    
+    $date = Date::now()->locale('fr_FR'); 
+    $date_actuel = $date->isoFormat('LLLL');
+
+    return view('bienvenue',compact('date_actuel'));
 });
 
 
 Route::get('/table', function () {
-    return view('layout.tables');
+    return view('layout.messages');
 });
 
 Auth::routes(['verify' => true]);
@@ -93,14 +97,17 @@ Route::group([
 //     dump($date);
 // });
 
-use Illuminate\Support\Facades\Date;
+/* use Illuminate\Support\Facades\Date;
 
 Route::get('carbon', function () {
     $date = Date::now();
     dump($date);
     $newDate = $date->copy()->addDays(7);
     dump($newDate);
-});
+
+    $date1 = Date::now()->locale('fr_FR'); 
+    dump($date1->isoFormat('LLLL'));
+}); */
 
 
  
