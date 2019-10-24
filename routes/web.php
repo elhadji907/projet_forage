@@ -66,6 +66,15 @@ Route::group([
         Route::resource('/agents', 'agentController');
         Route::resource('/reglements', 'ReglementController')->except('create');
 
+
+ 
+       
+        }
+
+        
+        
+);
+
  //gestion des roles par niveau d'autorisation
  Route::get('loginfor/{rolename?}',function($rolename=null){
     if(!isset($rolename)){
@@ -80,12 +89,6 @@ Route::group([
     }
     return redirect()->route('login');
     })->name('loginfor');
- 
-       
-        }
-        
-);
-
 //route carbon
 
 // use Carbon\Carbon;
